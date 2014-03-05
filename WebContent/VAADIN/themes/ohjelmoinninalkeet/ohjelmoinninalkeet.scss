@@ -9,4 +9,14 @@
   @include reindeer;
 
   /* Insert your theme rules here */
+ h1 {font-size:30px; text-align:center}
+ 
+ h2 {text-align:center; margin-top:30px}
+ 
+ p {font-size:16px; text-align:rigth; margin-left:20px; margin-top:80px; margin-right:20px}
+ 
+ .v-button-caption {color:blue; font-size:14px;}
+ 
+ .v-button {margin:30px; width:150px;}
+ 
 }
