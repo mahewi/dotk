@@ -4,12 +4,16 @@ import com.example.ohjelmoinninalkeet.AloitusView;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ExternalResource;
+import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.HorizontalSplitPanel;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.VerticalSplitPanel;
 import com.vaadin.navigator.Navigator;
 
 /** A start view for navigating to the main view */
@@ -17,21 +21,27 @@ public class PythonUI extends VerticalLayout implements View {
 		
 	public static final String NAME = "pythonView";
 	private Button takaisin = new Button("Takaisin");
+	private Label otsikko = new Label("<h1 class='python'>Python</h1>");
+	private Label test = new Label("JEE");
 	
     public PythonUI() {
-    	/**
-    	Link lnk = new Link("Message: Testi", new ExternalResource("#!" + AloitusView.NAME));
-        addComponent(lnk);
-        **/
-    	
+    	initLayout();
+    }
+    
+    public void initLayout() {
+		
     	// Button, josta p‰‰see takaisin aloitusn‰kym‰‰n.
 		takaisin.addClickListener(new Button.ClickListener() {
 		    public void buttonClick(ClickEvent event) {
 		    	getUI().getNavigator().navigateTo(AloitusView.NAME);
 		    }
 		});
+		
+        otsikko.setContentMode(ContentMode.HTML);;
         addComponent(takaisin);
-    }        
+        addComponent(otsikko);
+     
+    }
         
     @Override
     public void enter(ViewChangeEvent event) {
