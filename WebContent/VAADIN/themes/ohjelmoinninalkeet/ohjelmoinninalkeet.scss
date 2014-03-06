@@ -18,15 +18,20 @@
  
  p {font-size:17px; text-align:rigth; margin-left:20px; margin-top:20px; margin-right:20px; line-height:1.5;}
  
- .v-button-caption {color:blue; font-size:18px;}
+ .v-button-caption {color:blue; font-size:20px;}
  
- .v-button {margin:30px; width:150px; border-style:none; }
+ .v-button {margin:30px; width:250px; border-style:none; }
  
  .v-panel {margin-left:30%; margin-top:3%;}
  
  .v-splitpanel-horizontal {background:#F0F0F0;}
  
+ /**.v-splitpanel-first-container {background:red;}**/ 
+ 
+ /**.v-splitpanel-second-container {background:green;}**/
+ 
  .v-vertical {background:#F0F0F0;}
  
  .tekijaStyle {font-size:14px; margin-left:55%; margin-top:85%;}
+ 
 }

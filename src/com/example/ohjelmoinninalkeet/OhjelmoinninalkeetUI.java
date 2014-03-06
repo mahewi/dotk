@@ -4,6 +4,9 @@ import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.shared.ui.label.ContentMode;
@@ -12,6 +15,7 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.HorizontalSplitPanel;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -26,7 +30,7 @@ public class OhjelmoinninalkeetUI extends UI {
 	private Label tekijat = new Label("<i>(c) Marco Willgren & Tatu Seppä-Lassila, 2014</i>");
 	private Button python = new Button("Python");
 	private Panel esittelyPaneeli = new Panel();
-
+	
 	@WebServlet(value = "/*", asyncSupported = true)
 	@VaadinServletConfiguration(productionMode = false, ui = OhjelmoinninalkeetUI.class)
 	public static class Servlet extends VaadinServlet {
@@ -35,6 +39,11 @@ public class OhjelmoinninalkeetUI extends UI {
 	@Override
 	protected void init(VaadinRequest request) {
 		initLayout();
+		
+		/** Testi
+        Navigator navigator = new Navigator(this, this);
+        navigator.addView("", new Start());
+        */
 	}
 	
 	public void initLayout() {
@@ -68,6 +77,14 @@ public class OhjelmoinninalkeetUI extends UI {
 		split.setLocked(true);
 		split.setSplitPosition(60);
 		
+		/** testi
+		python.addClickListener(new Button.ClickListener() {
+		    public void buttonClick(ClickEvent event) {
+		    	getUI().getNavigator().navigateTo("");
+		    }
+		});
+		*/
+		
 		vasenLayout.addComponent(otsikko);
 		vasenLayout.addComponent(esittelyPaneeli);
 		oikeaLayout.addComponent(kielet);
@@ -77,5 +94,5 @@ public class OhjelmoinninalkeetUI extends UI {
 		vasenLayout.setComponentAlignment(esittelyPaneeli, Alignment.MIDDLE_CENTER);
 		oikeaLayout.setComponentAlignment(python, Alignment.MIDDLE_CENTER);
 	}
-
+	
 }
