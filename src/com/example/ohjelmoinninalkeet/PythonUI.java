@@ -40,7 +40,9 @@ public class PythonUI extends VerticalLayout implements View {
         otsikko.setContentMode(ContentMode.HTML);;
         addComponent(takaisin);
         addComponent(otsikko);
-     
+        
+        Link lnk = new Link("Editorinäkymään--->", new ExternalResource("#!" + Editori.NAME));
+        addComponent(lnk);
     }
         
     @Override

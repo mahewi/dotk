@@ -28,6 +28,7 @@ public class OhjelmoinninalkeetUI extends UI {
         // Näkymien rekisteröinti
         navigator.addView(AloitusView.NAME, new AloitusView());
         navigator.addView(PythonUI.NAME, new PythonUI());
+        navigator.addView(Editori.NAME, new Editori());
 
     }
 }
