@@ -6,6 +6,7 @@ import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.TextArea;
 
 public class Editori extends Panel implements View {
 
@@ -18,8 +19,12 @@ public class Editori extends Panel implements View {
 	public void initLayout() {
 		Link lnk = new Link("BÄK!:D", new ExternalResource("#!" + PythonUI.NAME));
 		VerticalLayout vlay = new VerticalLayout();
-		setContent(vlay);
 		vlay.addComponent(lnk);
+		TextArea tekstikentta = new TextArea("Koodia tähän");
+		tekstikentta.setWidth(50.0f, TextArea.Unit.PERCENTAGE);
+		tekstikentta.setRows(30);
+		vlay.addComponent(tekstikentta);
+		setContent(vlay);
 	}
 
 	@Override
