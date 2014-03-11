@@ -5,6 +5,9 @@ public class Tehtava {
 	private String tuloste = "";
 	private String oikeaVastaus = "";
 	
+	/**
+	 * @return the tehtAnto
+	 */
 	public String annaTehtAnto() {
 		return this.tehtAnto;
 	}
@@ -22,4 +25,5 @@ public class Tehtava {
 	public String getOikeaVastaus() {
 		return oikeaVastaus;
 	}
+	
 }

@@ -27,8 +27,8 @@ public class Editori extends Panel implements View {
 	TextArea tekstikentta = new TextArea("Koodia tähän");
 	Button nappula = new Button("Arvioi");
 	Label label = new Label();
-	Link lnk = new Link("BÄK!:D", new ExternalResource("#!" + PythonUI.NAME));
-	Label l1 = new Label("");
+	Link lnk = new Link("Takaisin", new ExternalResource("#!" + PythonUI.NAME));
+	Label tehtAnto = new Label("");
 
 	public Editori() {
 		initLayout();
@@ -40,7 +40,7 @@ public class Editori extends Panel implements View {
 		tekstikentta.setRows(30);
 		
 		vlay.addComponent(lnk);
-		vlay.addComponent(l1);
+		vlay.addComponent(tehtAnto);
 		vlay.addComponent(tekstikentta);
 		vlay.addComponent(nappula);
 		vlay.addComponent(label);
@@ -74,11 +74,11 @@ public class Editori extends Panel implements View {
 	@Override
 	public void enter(ViewChangeEvent event) {
 		if (event.getParameters() == null) {
-			System.out.println("lol");
+			Notification.show("Nyt sattui jotain jännää!");
 		}
 		else {
 			String[] param = event.getParameters().split("/");
-			l1.setValue(param[0]);
+			tehtAnto.setValue(param[0]);
 		}
 		
 	}
