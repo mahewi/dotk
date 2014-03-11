@@ -29,6 +29,7 @@ public class PythonUI extends HorizontalSplitPanel implements View {
 	private Button teht4 = new Button("Tehtävä 4");
 	private Panel ohjePaneeli = new Panel();
 	private Label ohje = new Label("");
+	Teht1 t1 = new Teht1();
 	
     public PythonUI() {
     	initLayout();
@@ -50,7 +51,7 @@ public class PythonUI extends HorizontalSplitPanel implements View {
 		
 		teht1.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				getUI().getNavigator().navigateTo(Editori.NAME);
+				getUI().getNavigator().navigateTo(Editori.NAME + "/" + "1");
 			}
 		});
 		

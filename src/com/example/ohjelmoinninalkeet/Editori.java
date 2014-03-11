@@ -4,7 +4,6 @@ package com.example.ohjelmoinninalkeet;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ExternalResource;
-import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
@@ -14,8 +13,6 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Label;
-
-import java.lang.StringBuilder;
 
 
 import java.io.*;
@@ -29,9 +26,10 @@ public class Editori extends Panel implements View {
 	VerticalLayout vlay = new VerticalLayout();
 	TextArea tekstikentta = new TextArea("Koodia tähän");
 	Button nappula = new Button("Arvioi");
-	TextArea label = new TextArea();
+	Label label = new Label();
 	Link lnk = new Link("BÄK!:D", new ExternalResource("#!" + PythonUI.NAME));
-	
+	Label l1 = new Label("");
+
 	public Editori() {
 		initLayout();
 	}
@@ -40,8 +38,9 @@ public class Editori extends Panel implements View {
 		
 		tekstikentta.setWidth(50.0f, TextArea.Unit.PERCENTAGE);
 		tekstikentta.setRows(30);
-		//label.setContentMode(ContentMode.HTML);
+		
 		vlay.addComponent(lnk);
+		vlay.addComponent(l1);
 		vlay.addComponent(tekstikentta);
 		vlay.addComponent(nappula);
 		vlay.addComponent(label);
@@ -63,22 +62,24 @@ public class Editori extends Panel implements View {
 			out.write(code);
 			out.close();
 
-			Runtime r = Runtime.getRuntime();
-            Process p = r.exec("python test.py");
-            BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            p.waitFor();
-            String paluu = "";
-            while (br.ready()) {
-                paluu = paluu + br.readLine() + "\n";
-            }
-            return paluu;
+			ProcessBuilder pb = new ProcessBuilder("python", "test.py");
+			Process p = pb.start();
+			BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String paluu = new String(in.readLine());
+			return paluu;
 		}
 		catch(Exception e){return e.toString();}
 	}
 	
 	@Override
 	public void enter(ViewChangeEvent event) {
-		// TODO Auto-generated method stub
+		if (event.getParameters() == null) {
+			System.out.println("lol");
+		}
+		else {
+			String[] param = event.getParameters().split("/");
+			l1.setValue(param[0]);
+		}
 		
 	}
 }
