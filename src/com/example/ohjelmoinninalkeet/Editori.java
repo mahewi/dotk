@@ -4,6 +4,7 @@ package com.example.ohjelmoinninalkeet;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ExternalResource;
+import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
@@ -13,6 +14,8 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Label;
+
+import java.lang.StringBuilder;
 
 
 import java.io.*;
@@ -26,7 +29,7 @@ public class Editori extends Panel implements View {
 	VerticalLayout vlay = new VerticalLayout();
 	TextArea tekstikentta = new TextArea("Koodia tähän");
 	Button nappula = new Button("Arvioi");
-	Label label = new Label();
+	TextArea label = new TextArea();
 	Link lnk = new Link("BÄK!:D", new ExternalResource("#!" + PythonUI.NAME));
 	
 	public Editori() {
@@ -37,7 +40,7 @@ public class Editori extends Panel implements View {
 		
 		tekstikentta.setWidth(50.0f, TextArea.Unit.PERCENTAGE);
 		tekstikentta.setRows(30);
-		
+		//label.setContentMode(ContentMode.HTML);
 		vlay.addComponent(lnk);
 		vlay.addComponent(tekstikentta);
 		vlay.addComponent(nappula);
@@ -60,11 +63,15 @@ public class Editori extends Panel implements View {
 			out.write(code);
 			out.close();
 
-			ProcessBuilder pb = new ProcessBuilder("python", "test.py");
-			Process p = pb.start();
-			BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			String paluu = new String(in.readLine());
-			return paluu;
+			Runtime r = Runtime.getRuntime();
+            Process p = r.exec("python test.py");
+            BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            p.waitFor();
+            String paluu = "";
+            while (br.ready()) {
+                paluu = paluu + br.readLine() + "\n";
+            }
+            return paluu;
 		}
 		catch(Exception e){return e.toString();}
 	}
