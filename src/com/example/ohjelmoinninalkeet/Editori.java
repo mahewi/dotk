@@ -3,8 +3,7 @@ package com.example.ohjelmoinninalkeet;
 //import com.sun.nio.sctp.Notification;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
-import com.vaadin.server.ExternalResource;
-import com.vaadin.ui.Link;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.TextArea;
@@ -13,21 +12,19 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Label;
-
-
 import java.io.*;
+
 
 public class Editori extends Panel implements View {
 
 	public static final String NAME = "editoriView";
 	
 	// Komponentit
-	
 	VerticalLayout vlay = new VerticalLayout();
-	TextArea tekstikentta = new TextArea("Koodia t‰h‰n");
+	TextArea tekstikentta = new TextArea("");
 	Button nappula = new Button("Arvioi");
+	Button takaisin = new Button("Takaisin");
 	Label label = new Label();
-	Link lnk = new Link("Takaisin", new ExternalResource("#!" + PythonUI.NAME));
 	Label tehtAnto = new Label("");
 
 	public Editori() {
@@ -38,19 +35,27 @@ public class Editori extends Panel implements View {
 		
 		tekstikentta.setWidth(50.0f, TextArea.Unit.PERCENTAGE);
 		tekstikentta.setRows(30);
+		tehtAnto.setStyleName("tehtavanAnto");
 		
-		vlay.addComponent(lnk);
+		vlay.addComponent(takaisin);
 		vlay.addComponent(tehtAnto);
 		vlay.addComponent(tekstikentta);
 		vlay.addComponent(nappula);
 		vlay.addComponent(label);
+		vlay.setComponentAlignment(tekstikentta, Alignment.MIDDLE_CENTER);
 		
 		// Tapahtuman k‰sittely nappulalle
-		
 		nappula.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				label.setValue(toPython(tekstikentta.getValue()));
 			}
+		});
+		
+    	// Button, josta p‰‰see takaisin Python-n‰kym‰‰n.
+		takaisin.addClickListener(new Button.ClickListener() {
+		    public void buttonClick(ClickEvent event) {
+		    	getUI().getNavigator().navigateTo(PythonUI.NAME);
+		    }
 		});
 		
 		setContent(vlay);
@@ -77,8 +82,7 @@ public class Editori extends Panel implements View {
 			Notification.show("Nyt sattui jotain j‰nn‰‰!");
 		}
 		else {
-			String[] param = event.getParameters().split("/");
-			tehtAnto.setValue(param[0]);
+			tehtAnto.setValue(event.getParameters() + ":");
 		}
 		
 	}
