@@ -24,7 +24,7 @@ public class Editori extends Panel implements View {
 	TextArea tekstikentta = new TextArea("");
 	Button nappula = new Button("Arvioi");
 	Button takaisin = new Button("Takaisin");
-	Label label = new Label();
+	TextArea label = new TextArea();
 	Label tehtAnto = new Label("");
 
 	public Editori() {
@@ -66,12 +66,18 @@ public class Editori extends Panel implements View {
 			BufferedWriter out = new BufferedWriter(new FileWriter("test.py"));
 			out.write(code);
 			out.close();
+			
 
-			ProcessBuilder pb = new ProcessBuilder("python", "test.py");
-			Process p = pb.start();
-			BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			String paluu = new String(in.readLine());
-			return paluu;
+			Runtime r = Runtime.getRuntime();
+            Process p = r.exec("python test.py");
+            BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            p.waitFor();
+            String paluu = "";
+            while (br.ready()) {
+                paluu = paluu + br.readLine() + "\n";
+            }
+            return paluu;
+            
 		}
 		catch(Exception e){return e.toString();}
 	}
