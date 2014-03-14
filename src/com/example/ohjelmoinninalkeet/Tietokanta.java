@@ -17,7 +17,6 @@ public class Tietokanta {
 	    try {
 	      Class.forName("org.sqlite.JDBC");
 	      c = DriverManager.getConnection("jdbc:sqlite:pythonTehtavat.db");
-	      System.out.println("Yhteys auki!");
 	    }
 	    catch (Exception e) {
 	    	System.out.println(e.toString());
@@ -43,6 +42,7 @@ public class Tietokanta {
 			for (int i=2; i<=sarakkeet; i++) {
 				tehtava.add(rs.getString(i));
 			}
+			yhteys.close();
 		}
 		catch (Exception e) {
 	    	System.out.println(e.toString());

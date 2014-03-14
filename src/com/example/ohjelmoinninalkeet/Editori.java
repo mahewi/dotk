@@ -16,6 +16,7 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.Label;
 
 import java.io.*;
+import java.util.ArrayList;
 
 
 public class Editori extends Panel implements View {
@@ -31,14 +32,15 @@ public class Editori extends Panel implements View {
 	TextArea tulosteAlue = new TextArea();
 	Label otsikko = new Label("");
 	Label tehtAnto = new Label("");
-	private String tehtavanAnto = "";
-	Tietokanta db;
-	
+	private String tehtavaTyyppi = "";
+	private Tietokanta db;
+	private String tehtavanAnto;
+	private String vastaus;
+	private String oikeaTuloste;
 
 	public Editori() {
+		initDB();
 		initLayout();
-		db = new Tietokanta();
-		System.out.println(db.annaTehtava("muuttujat"));
 	}
 	
 	public void initLayout() {
@@ -54,7 +56,6 @@ public class Editori extends Panel implements View {
 		arvioi.setStyleName("arvioiStyle");
 		takaisin.setStyleName("takaisinStyle");
 		tehtAnto.setStyleName("tehtAntoStyle");
-		//tehtAnto.setValue(db.annaTehtava(tehtavanAnto).get(0));
 		
 		HorizontalLayout ylaHlay = new HorizontalLayout();
 		ylaHlay.setWidth("100%");
@@ -122,8 +123,15 @@ public class Editori extends Panel implements View {
 		}
 		else {
 			otsikko.setValue("<h1 class='editoriOtsikko'>" + event.getParameters() + "</h1>");
-			tehtavanAnto = event.getParameters();
+			tehtavaTyyppi = event.getParameters().toLowerCase();
+			System.out.println(tehtavaTyyppi.toLowerCase());
 		}
 		
+	}
+	
+	public void initDB() {
+		db = new Tietokanta();
+		tehtavanAnto = db.annaTehtava(tehtavaTyyppi).get(0);
+		System.out.println(tehtavanAnto);
 	}
 }
