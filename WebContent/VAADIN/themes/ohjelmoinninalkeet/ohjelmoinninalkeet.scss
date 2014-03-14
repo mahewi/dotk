@@ -44,7 +44,16 @@
  
  .takaisinStyle {margin-top:3%; margin-left:2%; margin-bottom:2%; width:20%;}
  
- .arvioiStyle {margin-top:1%; margin-left:1%; margin-bottom:2%; width:10%;}
+ .arvioiStyle {margin-top:5%; margin-left:50%; margin-bottom:2%; width:100%;}
+ 
+ .arvioiStyle .v-button-caption {color:black;}
+ 
+ .suoritaStyle {margin-top:5%; margin-left:30%; margin-right:5%; margin-bottom:2%; width:100%;}
+ 
+ .suoritaStyle .v-button-caption {color:black;}
  
  .pythonStyle {width:40%;}		
+ 
+ .pythonStyle .v-button-caption {color:black;}
+ 
 }

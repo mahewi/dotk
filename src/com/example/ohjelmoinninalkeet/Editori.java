@@ -25,7 +25,8 @@ public class Editori extends Panel implements View {
 	// Komponentit
 	VerticalLayout vlay = new VerticalLayout();
 	TextArea tekstikentta = new TextArea("");
-	Button nappula = new Button("Arvioi");
+	Button suorita = new Button("Suorita");
+	Button arvioi = new Button("Arvioi");
 	Button takaisin = new Button("Takaisin");
 	TextArea tulosteAlue = new TextArea();
 	Label otsikko = new Label("");
@@ -43,25 +44,32 @@ public class Editori extends Panel implements View {
 		tulosteAlue.setStyleName("tulosteStyle");
 		tulosteAlue.setEnabled(false);
 		otsikko.setContentMode(ContentMode.HTML);
-		nappula.setStyleName("arvioiStyle");
+		suorita.setStyleName("suoritaStyle");
+		arvioi.setStyleName("arvioiStyle");
 		takaisin.setStyleName("takaisinStyle");
-		HorizontalLayout ekaHlay = new HorizontalLayout();
-		ekaHlay.setWidth("100%");
-		HorizontalLayout tokaHlay = new HorizontalLayout();
-		tokaHlay.setWidth("100%");
 		
-		ekaHlay.addComponent(takaisin);
-		ekaHlay.addComponent(otsikko);
+		HorizontalLayout ylaHlay = new HorizontalLayout();
+		ylaHlay.setWidth("100%");
+		HorizontalLayout keskiHlay = new HorizontalLayout();
+		keskiHlay.setWidth("100%");
+		HorizontalLayout alaHlay = new HorizontalLayout();
 		
-		tokaHlay.addComponent(tekstikentta);
-		tokaHlay.addComponent(tulosteAlue);
+		ylaHlay.addComponent(takaisin);
+		ylaHlay.addComponent(otsikko);
 		
-		vlay.addComponent(ekaHlay);
-		vlay.addComponent(tokaHlay);
-		vlay.addComponent(nappula);
+		keskiHlay.addComponent(tekstikentta);
+		keskiHlay.addComponent(tulosteAlue);
+		
+		alaHlay.addComponent(suorita);
+		alaHlay.addComponent(arvioi);
+		
+		vlay.addComponent(ylaHlay);
+		vlay.addComponent(keskiHlay);
+		vlay.addComponent(alaHlay);
+		//vlay.addComponent(nappula);
 		
 		// Tapahtuman käsittely nappulalle
-		nappula.addClickListener(new Button.ClickListener() {
+		suorita.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				tulosteAlue.setValue(toPython(tekstikentta.getValue()));
 			}
