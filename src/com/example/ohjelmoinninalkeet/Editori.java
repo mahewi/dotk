@@ -74,7 +74,7 @@ public class Editori extends Panel implements View {
 		HorizontalLayout keskiHlay = new HorizontalLayout();
 		keskiHlay.setWidth("100%");
 		HorizontalLayout alaHlay = new HorizontalLayout();
-		alaHlay.setWidth("20%");
+		alaHlay.setWidth("40%");
 		
 		ylaHlay.addComponent(takaisin);
 		ylaOtsikkoHlay.addComponent(otsikko);
