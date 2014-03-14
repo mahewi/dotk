@@ -14,7 +14,7 @@
  
  h1.python {font-size:36px; text-align:center; margin-top:2%;}
  
- h1.editoriOtsikko {font-size:36px; text-align:left; margin-bottom:5%;}
+ h1.editoriOtsikko {font-size:36px; text-align:center; margin-bottom:2%;}
  
  h2 {font-size:30px; text-align:center; margin-top:10%}
  
@@ -36,26 +36,28 @@
  
  .tulosteStyle {margin-top:2%;}
  
- .tekijaStyle {font-size:14px; margin-left:1%; margin-top:60%;}
+ .tekijaStyle {font-size:14px; margin-top:40%; margin-right:2%;}
  
  .tehtavaStyle .v-button-caption {color:black; font-size:18px;}
  
  .tehtavanAnto {font-size:30px; text-align:center;}
  
- .takaisinStyle {margin-top:3%; margin-left:2%; margin-bottom:2%; width:20%;}
+ .takaisinStyle {margin-top:2%; margin-left:2%; margin-bottom:0%; width:10%;}
  
- .arvioiStyle {margin-top:5%; margin-left:50%; margin-bottom:2%; width:100%;}
+ .arvioiStyle {margin-top:5%; margin-left:80%; margin-bottom:2%; width:100%;}
  
  .arvioiStyle .v-button-caption {color:black;}
  
- .suoritaStyle {margin-top:5%; margin-left:30%; margin-right:5%; margin-bottom:2%; width:100%;}
+ .suoritaStyle {margin-top:5%; margin-left:65%; margin-right:5%; margin-bottom:2%; width:100%;}
  
  .suoritaStyle .v-button-caption {color:black;}
  
- .pythonStyle {width:40%;}		
+ .pythonStyle {width:40%; margin-top:5%;}		
  
  .pythonStyle .v-button-caption {color:black;}
  
- .tehtAntoStyle {margin-left:2%; font-size:16px;}
+ .tehtAntoStyle {margin-left:13%; font-size:16px;}
+ 
+ .tulosteOtsikkoStyle {margin-left:10%; font-size:16px;}
  
 }

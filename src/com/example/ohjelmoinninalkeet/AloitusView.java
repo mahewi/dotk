@@ -14,6 +14,12 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 
 @SuppressWarnings("serial")
+/**
+ * N‰kym‰ toimii ohjelman kotisivuna/aloitusn‰kym‰n‰. Se sis‰lt‰‰ esittelytekstin ja mahdollisuuden siirty‰
+ * harjoittelemaan tietyn ohjelmointikielen teht‰vi‰.
+ * @author Marco Willgren & Tatu Sepp‰-Lassila
+ *
+ */
 public class AloitusView extends Panel implements View {
 	
 	public static final String NAME = "";
@@ -28,6 +34,9 @@ public class AloitusView extends Panel implements View {
 		initLayout();
 	}
 	
+	/**
+	 * Metodissa m‰‰ritet‰‰n n‰kym‰n graafinen toteutus ja komponenttien toiminnallisuudet.
+	 */
 	public void initLayout() {
 		otsikko.setContentMode(ContentMode.HTML);
 		esittely.setContentMode(ContentMode.HTML);
@@ -42,24 +51,27 @@ public class AloitusView extends Panel implements View {
 				+ "v‰littˆm‰sti palautteen teht‰v‰st‰. Palautteen saamisen j‰lkeen k‰ytt‰j‰ voi joko palata takaisin korjaamaan vastaustaan tai siirty‰ katsomaan mallivastauksen. Mallivastaus sis‰lt‰‰ niin ohjelmakoodiosan "
 				+ "kuin visuaalisen esityksen, mit‰ ohjelmassa k‰yt‰nnˆss‰ tapahtuu.<br></br>"
 				+ "Onnea tuleviin koitoksiin!</p>";
+		
 		esittely.setValue(teksti);
-		esittelyPaneeli.setWidth("60%");
+		esittelyPaneeli.setWidth("80%");
 		esittelyPaneeli.setHeight("60%");
 		esittelyPaneeli.setContent(esittely);
 		tekijat.setStyleName("tekijaStyle");
 		python.setStyleName("pythonStyle");
+		tekijat.setSizeUndefined();
 		
 		HorizontalSplitPanel split = new HorizontalSplitPanel();
 		setContent(split);
 		
 		VerticalLayout vasenLayout = new VerticalLayout();
-		VerticalLayout oikeaLayout = new VerticalLayout();
+		VerticalLayout oikeaLayout = new VerticalLayout();	
 		
 		split.addComponent(vasenLayout);
 		split.addComponent(oikeaLayout);
 		split.setLocked(true);
 		split.setSplitPosition(60);
 		
+		// Painike, josta p‰‰see Python-n‰kym‰‰n.
 		python.addClickListener(new Button.ClickListener() {
 		    public void buttonClick(ClickEvent event) {
 		    	getUI().getNavigator().navigateTo(PythonUI.NAME);
@@ -74,6 +86,7 @@ public class AloitusView extends Panel implements View {
 		
 		vasenLayout.setComponentAlignment(esittelyPaneeli, Alignment.MIDDLE_CENTER);
 		oikeaLayout.setComponentAlignment(python, Alignment.MIDDLE_CENTER);
+		oikeaLayout.setComponentAlignment(tekijat, Alignment.BOTTOM_RIGHT);
 	}
 	
 	@Override

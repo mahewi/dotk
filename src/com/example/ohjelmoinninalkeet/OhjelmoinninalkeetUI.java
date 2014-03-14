@@ -12,6 +12,12 @@ import com.vaadin.ui.UI;
 
 @SuppressWarnings("serial")
 @Theme("ohjelmoinninalkeet")
+/**
+ * Luokassa alustetaan navigaattori-olio, jonka avulla ohjelmassa siirrytään eri näkymien välillä.
+ * Navigaattoriolioon rekisteröidään kaikki halutut näkymät.
+ * @author Marco Willgren & Tatu Seppä-Lassila
+ *
+ */
 public class OhjelmoinninalkeetUI extends UI {
 
 	@WebServlet(value = "/*", asyncSupported = true)

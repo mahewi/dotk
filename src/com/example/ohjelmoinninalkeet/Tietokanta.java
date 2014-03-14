@@ -4,6 +4,12 @@ import java.sql.*;
 import java.util.Random;
 import java.util.ArrayList;
 
+/**
+ * Tietokanta luokka sis‰lt‰‰ tietokantaan liittyv‰t toiminnallisuudet.
+ * Yhteydenoton ja tietojen hakemisen.
+ * @author Marco Willgren & Tatu Sepp‰-Lassila
+ *
+ */
 public class Tietokanta {
 	
 	private Connection yhteys;
@@ -12,6 +18,10 @@ public class Tietokanta {
 		this.yhteys = yhdistaKantaan();
 	}
 	
+	/**
+	 * Luo yhteyden sqlite-tietokantaan.
+	 * @return Yhteys-olion
+	 */
 	public Connection yhdistaKantaan() {
 		Connection c = yhteys;
 	    try {
@@ -24,6 +34,11 @@ public class Tietokanta {
 	    return c;
 	}
 	
+	/**
+	 * Metodi hakee argumenttina saamansa mukaisen (satunnaisen) teht‰v‰n tietokannasta. 
+	 * @param tyyppi
+	 * @return Satunnaisesti valitun teht‰v‰n tiedot ArrayListin‰
+	 */
 	public ArrayList<String> annaTehtava(String tyyppi) {
 		
 		Random rand = new Random();

@@ -14,7 +14,12 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.navigator.Navigator;
 
-/** A start view for navigating to the main view */
+/**
+ * PythonUI-n‰kym‰ m‰‰rittelee Python-ohjelmointikielen "kotisivun" ohjelmassa. N‰kym‰ sis‰lt‰‰
+ * Mahdollisuuden valita eri teht‰v‰tyyppej‰.
+ * @author Marco Willgren & Tatu Sepp‰-Lassila
+ *
+ */
 public class PythonUI extends HorizontalSplitPanel implements View {
 		
 	public static final String NAME = "pythonView";
@@ -32,38 +37,44 @@ public class PythonUI extends HorizontalSplitPanel implements View {
     	initLayout();
     }
     
+    /**
+     * Metodissa m‰‰ritell‰‰n n‰kym‰n graafinen ulkoasu ja rekisterˆid‰‰n komponenttien toiminnallisuudet.
+     */
     public void initLayout() {
-		
     	
     	String ohjeTeksti = "<p><b class='esittelyotsikko'>Teht‰v‰n‰kym‰</b> <br></br> Teht‰v‰n‰kym‰ss‰ voit valita haluamasi teht‰v‰tyypin."
     			+ " Painamalla tietty‰ teht‰v‰tyyppi‰ ohjelma avaa automaattisesti uuden teht‰v‰n.</p>";
     	ohje.setContentMode(ContentMode.HTML);
     	
-    	// Button, josta p‰‰see takaisin aloitusn‰kym‰‰n.
+    	// Painike, josta p‰‰see takaisin aloitusn‰kym‰‰n.
 		takaisin.addClickListener(new Button.ClickListener() {
 		    public void buttonClick(ClickEvent event) {
 		    	getUI().getNavigator().navigateTo(AloitusView.NAME);
 		    }
 		});
 		
+		// Painike, josta p‰‰see teht‰v‰n‰kym‰‰n (Editori-n‰kym‰).
 		teht1.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				getUI().getNavigator().navigateTo(Editori.NAME + "/" + "Muuttujat");
 			}
 		});
 		
+		// Painike, josta p‰‰see teht‰v‰n‰kym‰‰n (Editori-n‰kym‰).
 		teht2.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				getUI().getNavigator().navigateTo(Editori.NAME + "/" + "Ehtolauseet");
 			}
 		});
 		
+		// Painike, josta p‰‰see teht‰v‰n‰kym‰‰n (Editori-n‰kym‰).
 		teht3.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				getUI().getNavigator().navigateTo(Editori.NAME + "/" + "Toistorakenteet");
 			}
 		});
 		
+		// Painike, josta p‰‰see teht‰v‰n‰kym‰‰n (Editori-n‰kym‰).
 		teht4.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				getUI().getNavigator().navigateTo(Editori.NAME + "/" + "Metodit");
@@ -72,7 +83,6 @@ public class PythonUI extends HorizontalSplitPanel implements View {
 		
 		setLocked(true);
 		setSplitPosition(15, HorizontalSplitPanel.Unit.PERCENTAGE);
-		
 		
 		VerticalLayout vasenLay = new VerticalLayout();
 		VerticalLayout oikeaLay = new VerticalLayout();
