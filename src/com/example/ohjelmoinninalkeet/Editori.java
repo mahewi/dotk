@@ -30,9 +30,15 @@ public class Editori extends Panel implements View {
 	Button takaisin = new Button("Takaisin");
 	TextArea tulosteAlue = new TextArea();
 	Label otsikko = new Label("");
+	Label tehtAnto = new Label("");
+	private String tehtavanAnto = "";
+	Tietokanta db;
+	
 
 	public Editori() {
 		initLayout();
+		db = new Tietokanta();
+		System.out.println(db.annaTehtava("muuttujat"));
 	}
 	
 	public void initLayout() {
@@ -47,6 +53,8 @@ public class Editori extends Panel implements View {
 		suorita.setStyleName("suoritaStyle");
 		arvioi.setStyleName("arvioiStyle");
 		takaisin.setStyleName("takaisinStyle");
+		tehtAnto.setStyleName("tehtAntoStyle");
+		//tehtAnto.setValue(db.annaTehtava(tehtavanAnto).get(0));
 		
 		HorizontalLayout ylaHlay = new HorizontalLayout();
 		ylaHlay.setWidth("100%");
@@ -64,6 +72,7 @@ public class Editori extends Panel implements View {
 		alaHlay.addComponent(arvioi);
 		
 		vlay.addComponent(ylaHlay);
+		vlay.addComponent(tehtAnto);
 		vlay.addComponent(keskiHlay);
 		vlay.addComponent(alaHlay);
 		//vlay.addComponent(nappula);
@@ -113,6 +122,7 @@ public class Editori extends Panel implements View {
 		}
 		else {
 			otsikko.setValue("<h1 class='editoriOtsikko'>" + event.getParameters() + "</h1>");
+			tehtavanAnto = event.getParameters();
 		}
 		
 	}
