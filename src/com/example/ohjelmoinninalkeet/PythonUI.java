@@ -21,9 +21,9 @@ public class PythonUI extends HorizontalSplitPanel implements View {
 	private Button takaisin = new Button("Takaisin");
 	private Label otsikko = new Label("<h1 class='python'>Python</h1>");
 	private Button teht1 = new Button("Muuttujat");
-	private Button teht2 = new Button("Tehtävä 2");
-	private Button teht3 = new Button("Tehtävä 3");
-	private Button teht4 = new Button("Tehtävä 4");
+	private Button teht2 = new Button("Ehtolauseet");
+	private Button teht3 = new Button("Toistorakenteet");
+	private Button teht4 = new Button("Metodit");
 	private Panel ohjePaneeli = new Panel();
 	private Label ohje = new Label("");
 	Tehtava t1 = new Tehtava();
@@ -49,6 +49,24 @@ public class PythonUI extends HorizontalSplitPanel implements View {
 		teht1.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				getUI().getNavigator().navigateTo(Editori.NAME + "/" + "Muuttujat");
+			}
+		});
+		
+		teht2.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				getUI().getNavigator().navigateTo(Editori.NAME + "/" + "Ehtolauseet");
+			}
+		});
+		
+		teht3.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				getUI().getNavigator().navigateTo(Editori.NAME + "/" + "Toistorakenteet");
+			}
+		});
+		
+		teht4.addClickListener(new Button.ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				getUI().getNavigator().navigateTo(Editori.NAME + "/" + "Metodit");
 			}
 		});
 		

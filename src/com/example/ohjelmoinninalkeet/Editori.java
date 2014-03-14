@@ -5,6 +5,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.TextArea;
@@ -26,7 +27,7 @@ public class Editori extends Panel implements View {
 	TextArea tekstikentta = new TextArea("");
 	Button nappula = new Button("Arvioi");
 	Button takaisin = new Button("Takaisin");
-	TextArea label = new TextArea();
+	TextArea tulosteAlue = new TextArea();
 	Label otsikko = new Label("");
 
 	public Editori() {
@@ -35,22 +36,37 @@ public class Editori extends Panel implements View {
 	
 	public void initLayout() {
 		
-		tekstikentta.setWidth(40, TextArea.Unit.PERCENTAGE);
+		tekstikentta.setWidth(80, TextArea.Unit.PERCENTAGE);
 		tekstikentta.setRows(30);
-		//tehtAnto.setStyleName("tehtavanAnto");
+		tulosteAlue.setWidth(80, TextArea.Unit.PERCENTAGE);
+		tulosteAlue.setRows(30);
+		tulosteAlue.setStyleName("tulosteStyle");
+		tulosteAlue.setEnabled(false);
 		otsikko.setContentMode(ContentMode.HTML);
+		nappula.setStyleName("arvioiStyle");
+		takaisin.setStyleName("takaisinStyle");
+		HorizontalLayout ekaHlay = new HorizontalLayout();
+		ekaHlay.setWidth("100%");
+		HorizontalLayout tokaHlay = new HorizontalLayout();
+		tokaHlay.setWidth("100%");
 		
-		vlay.addComponent(takaisin);
-		vlay.addComponent(otsikko);
-		vlay.addComponent(tekstikentta);
+		ekaHlay.addComponent(takaisin);
+		ekaHlay.addComponent(otsikko);
+		
+		tokaHlay.addComponent(tekstikentta);
+		tokaHlay.addComponent(tulosteAlue);
+		
+		vlay.addComponent(ekaHlay);
+		vlay.addComponent(tokaHlay);
+		//vlay.addComponent(tekstikentta);
 		vlay.addComponent(nappula);
-		vlay.addComponent(label);
-		vlay.setComponentAlignment(tekstikentta, Alignment.MIDDLE_LEFT);
+		//vlay.addComponent(label);
+		//vlay.setComponentAlignment(tekstikentta, Alignment.MIDDLE_LEFT);
 		
 		// Tapahtuman käsittely nappulalle
 		nappula.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				label.setValue(toPython(tekstikentta.getValue()));
+				tulosteAlue.setValue(toPython(tekstikentta.getValue()));
 			}
 		});
 		
