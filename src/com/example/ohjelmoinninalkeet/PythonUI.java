@@ -3,6 +3,7 @@ package com.example.ohjelmoinninalkeet;
 import com.example.ohjelmoinninalkeet.AloitusView;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.Sizeable;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -52,7 +53,8 @@ public class PythonUI extends HorizontalSplitPanel implements View {
 		});
 		
 		setLocked(true);
-		setSplitPosition(14);
+		setSplitPosition(15, HorizontalSplitPanel.Unit.PERCENTAGE);
+		
 		
 		VerticalLayout vasenLay = new VerticalLayout();
 		VerticalLayout oikeaLay = new VerticalLayout();
