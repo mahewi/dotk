@@ -3,6 +3,7 @@ package com.example.ohjelmoinninalkeet;
 //import com.sun.nio.sctp.Notification;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
@@ -12,6 +13,7 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Label;
+
 import java.io.*;
 
 
@@ -25,7 +27,7 @@ public class Editori extends Panel implements View {
 	Button nappula = new Button("Arvioi");
 	Button takaisin = new Button("Takaisin");
 	TextArea label = new TextArea();
-	Label tehtAnto = new Label("");
+	Label otsikko = new Label("");
 
 	public Editori() {
 		initLayout();
@@ -33,16 +35,17 @@ public class Editori extends Panel implements View {
 	
 	public void initLayout() {
 		
-		tekstikentta.setWidth(50.0f, TextArea.Unit.PERCENTAGE);
+		tekstikentta.setWidth(40, TextArea.Unit.PERCENTAGE);
 		tekstikentta.setRows(30);
-		tehtAnto.setStyleName("tehtavanAnto");
+		//tehtAnto.setStyleName("tehtavanAnto");
+		otsikko.setContentMode(ContentMode.HTML);
 		
 		vlay.addComponent(takaisin);
-		vlay.addComponent(tehtAnto);
+		vlay.addComponent(otsikko);
 		vlay.addComponent(tekstikentta);
 		vlay.addComponent(nappula);
 		vlay.addComponent(label);
-		vlay.setComponentAlignment(tekstikentta, Alignment.MIDDLE_CENTER);
+		vlay.setComponentAlignment(tekstikentta, Alignment.MIDDLE_LEFT);
 		
 		// Tapahtuman k‰sittely nappulalle
 		nappula.addClickListener(new Button.ClickListener() {
@@ -88,7 +91,7 @@ public class Editori extends Panel implements View {
 			Notification.show("Nyt sattui jotain j‰nn‰‰!");
 		}
 		else {
-			tehtAnto.setValue(event.getParameters() + ":");
+			otsikko.setValue("<h1 class='editoriOtsikko'>" + event.getParameters() + "</h1>");
 		}
 		
 	}

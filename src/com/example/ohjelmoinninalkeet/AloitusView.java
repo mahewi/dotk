@@ -17,7 +17,7 @@ import com.vaadin.ui.VerticalLayout;
 public class AloitusView extends Panel implements View {
 	
 	public static final String NAME = "";
-	private Label otsikko = new Label("<h1>Ohjelmoinnin alkeet</h1>");
+	private Label otsikko = new Label("<h1 class='etuSivuOtsikko'>Ohjelmoinnin alkeet</h1>");
 	private Label esittely = new Label("");
 	private Label kielet = new Label("<h2>Valitse ohjelmointikieli</h2>");
 	private Label tekijat = new Label("<i>(c) Marco Willgren & Tatu Seppä-Lassila, 2014</i>");
