@@ -24,7 +24,7 @@
  
  .v-button-caption {color:blue; font-size:20px;}
  
- .v-button {margin-left:2%; margin-top:10%; margin-bottom:10%; width:200px; border-style:none;}
+ .v-button {margin-left:2%; margin-top:10%; margin-bottom:10%; width:80%; border-style:none;}
  
  .v-panel {margin-top:3%;}
  
@@ -42,7 +42,9 @@
  
  .tehtavanAnto {font-size:30px; text-align:center;}
  
- .takaisinStyle {margin-top:3%; margin-left:2%; margin-bottom:2%;}
+ .takaisinStyle {margin-top:3%; margin-left:2%; margin-bottom:2%; width:20%;}
  
- .arvioiStyle {margin-top:1%; margin-left:1%; margin-bottom:2%;}		
+ .arvioiStyle {margin-top:1%; margin-left:1%; margin-bottom:2%; width:10%;}
+ 
+ .pythonStyle {width:40%;}		
 }

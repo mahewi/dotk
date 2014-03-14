@@ -58,10 +58,7 @@ public class Editori extends Panel implements View {
 		
 		vlay.addComponent(ekaHlay);
 		vlay.addComponent(tokaHlay);
-		//vlay.addComponent(tekstikentta);
 		vlay.addComponent(nappula);
-		//vlay.addComponent(label);
-		//vlay.setComponentAlignment(tekstikentta, Alignment.MIDDLE_LEFT);
 		
 		// Tapahtuman käsittely nappulalle
 		nappula.addClickListener(new Button.ClickListener() {

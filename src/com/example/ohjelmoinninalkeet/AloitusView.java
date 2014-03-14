@@ -47,6 +47,7 @@ public class AloitusView extends Panel implements View {
 		esittelyPaneeli.setHeight("60%");
 		esittelyPaneeli.setContent(esittely);
 		tekijat.setStyleName("tekijaStyle");
+		python.setStyleName("pythonStyle");
 		
 		HorizontalSplitPanel split = new HorizontalSplitPanel();
 		setContent(split);
