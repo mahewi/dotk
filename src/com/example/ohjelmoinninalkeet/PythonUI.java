@@ -27,10 +27,10 @@ public class PythonUI extends HorizontalSplitPanel implements View {
 	public static final String NAME = "pythonView";
 	private Button takaisin = new Button("Takaisin");
 	private Label otsikko = new Label("<h1 class='python'>Python</h1>");
-	private Button teht1 = new Button("Muuttujat");
-	private Button teht2 = new Button("Ehtolauseet");
-	private Button teht3 = new Button("Toistorakenteet");
-	private Button teht4 = new Button("Metodit");
+	private Button teht1 = new Button("Tehtävä: Muuttujat");
+	private Button teht2 = new Button("Tehtävä: Ehtolauseet");
+	private Button teht3 = new Button("Tehtävä: Toistorakenteet");
+	private Button teht4 = new Button("Tehtävä: Metodit");
 	private Button muuttujaTuto = new Button("Tutoriaali: Muuttujat");
 	private Button ehtoTuto = new Button("Tutoriaali: Ehtolauseet");
 	private Button toistoTuto = new Button("Tutoriaali: Toistorakenteet");
@@ -141,14 +141,14 @@ public class PythonUI extends HorizontalSplitPanel implements View {
         
         vasenLay.addComponent(takaisin);
         vasenLay.addComponent(otsikko);
-        vasenLay.addComponent(teht1);
-        vasenLay.addComponent(teht2);
-        vasenLay.addComponent(teht3);
-        vasenLay.addComponent(teht4);
         vasenLay.addComponent(muuttujaTuto);
         vasenLay.addComponent(ehtoTuto);
         vasenLay.addComponent(toistoTuto);
         vasenLay.addComponent(metodiTuto);
+        vasenLay.addComponent(teht1);
+        vasenLay.addComponent(teht2);
+        vasenLay.addComponent(teht3);
+        vasenLay.addComponent(teht4);
         oikeaLay.addComponent(ohjePaneeli);
         
         
