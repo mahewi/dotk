@@ -6,6 +6,7 @@ import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Panel;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.Button;
@@ -50,6 +51,7 @@ public class Editori extends Panel implements View {
 	
 	// Asetetaan komponentit näkymään ja rekisteröidään toiminnallisuuksia.
 	public void initLayout() {
+		vlay.setSizeFull();
 		tekstikentta.setWidth(80, TextArea.Unit.PERCENTAGE);
 		tekstikentta.setRows(30);
 		tulosteAlue.setWidth(80, TextArea.Unit.PERCENTAGE);
@@ -104,14 +106,17 @@ public class Editori extends Panel implements View {
 			}
 		});
 		
-		// Tapahtuman käsittely arvioi-napille
+		// Tapahtuman käsittely arvioi-napille. Napin painallus avaa ponnahdusikkunan
+		// , jonka sisältö riippu vastauksen oikeellisuudesta.
 		arvioi.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				if (arvioiVastaus()) {
-					Notification.show("VASTASIT OIKEIN");
+					PalautePopup palaute = new PalautePopup("Vastaus oikein!");
+					UI.getCurrent().addWindow(palaute);
 				}
 				else {
-					Notification.show("VASTASIT VÄÄRIN");					
+					PalautePopup palaute = new PalautePopup("Vastaus väärin!");
+					UI.getCurrent().addWindow(palaute);
 				}
 				arvioi.setEnabled(false);  // Napin painamisen jälkeen se disabloituu
 			}
@@ -179,7 +184,6 @@ public class Editori extends Panel implements View {
 			tehtavaTyyppi = event.getParameters().toLowerCase();
 			initDB();
 		}
-		
 	}
 	
 	/**

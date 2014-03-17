@@ -32,7 +32,7 @@
  
  .v-vertical {background:#F0F0F0;}
  
- .v-textarea {margin-left:4%;}
+ /*.v-textarea {margin-left:4%;}*/
  
  .tulosteStyle {margin-top:2%;}
  
@@ -56,8 +56,14 @@
  
  .pythonStyle .v-button-caption {color:black;}
  
- .tehtAntoStyle {margin-left:13%; font-size:16px;}
+ .tehtAntoStyle {margin-left:10%; font-size:16px;}
  
  .tulosteOtsikkoStyle {margin-left:10%; font-size:16px;}
+ 
+ .suljeStyle {width:50%; margin-bottom:0px;}
+ 
+ .suljeStyle .v-button-caption {color:black;}
+ 
+ .palauteStyle {font-size:22px; text-align:center;}
  
 }
