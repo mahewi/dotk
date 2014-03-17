@@ -12,7 +12,6 @@ import com.vaadin.ui.HorizontalSplitPanel;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Panel;
-import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.navigator.Navigator;
 
@@ -83,19 +82,6 @@ public class PythonUI extends HorizontalSplitPanel implements View {
 			}
 		});
 		
-		/**
-		// Some UI logic to open the sub-window
-		final Button open = new Button("Open Sub-Window");
-		open.addClickListener(new ClickListener() {
-		    public void buttonClick(ClickEvent event) {
-		        PalautePopup palaute = new PalautePopup();
-		        
-		        // Add it to the root component
-		        UI.getCurrent().addWindow(palaute);
-		    }
-		});
-		**/
-		
 		setLocked(true);
 		setSplitPosition(15, HorizontalSplitPanel.Unit.PERCENTAGE);
 		
@@ -121,7 +107,6 @@ public class PythonUI extends HorizontalSplitPanel implements View {
         vasenLay.addComponent(teht2);
         vasenLay.addComponent(teht3);
         vasenLay.addComponent(teht4);
-        //vasenLay.addComponent(open);
         oikeaLay.addComponent(ohjePaneeli);
         
         

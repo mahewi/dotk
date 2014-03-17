@@ -64,7 +64,7 @@ public class AloitusView extends Panel implements View {
 		setContent(split);
 		
 		VerticalLayout vasenLayout = new VerticalLayout();
-		VerticalLayout oikeaLayout = new VerticalLayout();	
+		VerticalLayout oikeaLayout = new VerticalLayout();
 		
 		split.addComponent(vasenLayout);
 		split.addComponent(oikeaLayout);
