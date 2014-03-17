@@ -29,9 +29,9 @@ public class PalautePopup extends Window {
         sisalto.addComponent(palaute);
         sisalto.addComponent(sulje);
         sisalto.setMargin(true);
-        setContent(sisalto);
         sisalto.setComponentAlignment(sulje, Alignment.BOTTOM_CENTER);
         sisalto.setComponentAlignment(palaute, Alignment.MIDDLE_CENTER);
+        setContent(sisalto);
         
         setClosable(false);
         setResizable(false);
