@@ -88,6 +88,7 @@ public class PythonUI extends HorizontalSplitPanel implements View {
 			}
 		});
 		
+		// Painike, josta p‰‰see tutoriaaliin
 		muuttujaTuto.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				MuuttujatPopup muuttujat = new MuuttujatPopup();
@@ -95,6 +96,7 @@ public class PythonUI extends HorizontalSplitPanel implements View {
 			}
 		});
 		
+		// Painike, josta p‰‰see tutoriaaliin
 		ehtoTuto.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				EhtolauseetPopup ehto = new EhtolauseetPopup();
@@ -102,6 +104,7 @@ public class PythonUI extends HorizontalSplitPanel implements View {
 			}
 		});
 		
+		// Painike, josta p‰‰see tutoriaaliin
 		toistoTuto.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				ToistorakenteetPopup toisto = new ToistorakenteetPopup();
@@ -109,6 +112,7 @@ public class PythonUI extends HorizontalSplitPanel implements View {
 			}
 		});
 		
+		// Painike, josta p‰‰see tutoriaaliin
 		metodiTuto.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				MetoditPopup metodit = new MetoditPopup();
