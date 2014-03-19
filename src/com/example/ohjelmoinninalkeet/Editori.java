@@ -32,20 +32,22 @@ public class Editori extends Panel implements View {
 	
 	// Komponentit
 	VerticalLayout vlay = new VerticalLayout();
-	TextArea tekstikentta = new TextArea("");
-	Button suorita = new Button("Suorita");
-	Button arvioi = new Button("Arvioi");
-	Button takaisin = new Button("Takaisin");
-	TextArea tulosteAlue = new TextArea();
-	Label otsikko = new Label("");
-	Label tehtAnto = new Label("");
-	Label tulosteOtsikko = new Label("Ohjelman tulostus (Python-k‰‰nt‰j‰n l‰pi ajettuna)");
+	private TextArea tekstikentta = new TextArea("");
+	private TextArea tulosteAlue = new TextArea();
+	private Button suorita = new Button("Suorita");
+	private Button arvioi = new Button("Arvioi");
+	private Button takaisin = new Button("Takaisin");
+	private Button ohje = new Button("OHJE");
+	private Button naytaVastaus = new Button("Mallivastaus");
+	private Label otsikko = new Label("");
+	private Label tehtAnto = new Label("");
+	private Label tulosteOtsikko = new Label("Ohjelman tulostus (Python-k‰‰nt‰j‰n l‰pi ajettuna)");
 	private String tehtavaTyyppi = "";
-	private Tietokanta db;
 	private String tehtavanAnto;
 	private String malliVastaus;
 	private String oikeaTuloste;
-
+	private Tietokanta db;
+	
 	public Editori() {
 		initLayout();
 	}
@@ -60,17 +62,21 @@ public class Editori extends Panel implements View {
 		tulosteAlue.setStyleName("tulosteStyle");
 		tulosteAlue.setEnabled(false);
 		arvioi.setEnabled(false);
+		naytaVastaus.setEnabled(false);
 		otsikko.setContentMode(ContentMode.HTML);
 		suorita.setStyleName("suoritaStyle");
 		arvioi.setStyleName("arvioiStyle");
+		naytaVastaus.setStyleName("naytaVastausStyle");
 		takaisin.setStyleName(Runo.BUTTON_DEFAULT);
+		ohje.setStyleName("ohjeStyle");
 		tehtAnto.setStyleName("tehtAntoStyle");
 		tulosteOtsikko.setStyleName("tulosteOtsikkoStyle");
 		takaisin.setWidth("250px");
+		ohje.setWidth("100px");
 		
 		// M‰‰ritet‰‰n VerticalLayoutin sis‰‰n tulevat Layoutit
 		HorizontalLayout ylaHlay = new HorizontalLayout();
-		//ylaHlay.setWidth("100%");
+		HorizontalLayout alempiYlaHlay = new HorizontalLayout();
 		HorizontalLayout ylaOtsikkoHlay = new HorizontalLayout();
 		ylaOtsikkoHlay.setWidth("100%");
 		HorizontalLayout ylaKeskiHlay = new HorizontalLayout();
@@ -81,6 +87,7 @@ public class Editori extends Panel implements View {
 		alaHlay.setWidth("40%");
 		
 		ylaHlay.addComponent(takaisin);
+		alempiYlaHlay.addComponent(ohje);
 		ylaOtsikkoHlay.addComponent(otsikko);
 		ylaKeskiHlay.addComponent(tehtAnto);
 		ylaKeskiHlay.addComponent(tulosteOtsikko);
@@ -90,11 +97,13 @@ public class Editori extends Panel implements View {
 		
 		alaHlay.addComponent(suorita);
 		alaHlay.addComponent(arvioi);
+		alaHlay.addComponent(naytaVastaus);
 		
 		keskiHlay.setComponentAlignment(tekstikentta, Alignment.MIDDLE_CENTER);
 		keskiHlay.setComponentAlignment(tulosteAlue, Alignment.MIDDLE_CENTER);
 		
 		vlay.addComponent(ylaHlay);
+		vlay.addComponent(alempiYlaHlay);
 		vlay.addComponent(ylaOtsikkoHlay);
 		vlay.addComponent(ylaKeskiHlay);
 		vlay.addComponent(keskiHlay);
@@ -129,6 +138,7 @@ public class Editori extends Panel implements View {
 					UI.getCurrent().addWindow(palaute);
 				}
 				arvioi.setEnabled(false);  // Napin painamisen j‰lkeen se disabloituu
+				naytaVastaus.setEnabled(true);
 			}
 		});
 		
@@ -136,6 +146,23 @@ public class Editori extends Panel implements View {
 		takaisin.addClickListener(new Button.ClickListener() {
 		    public void buttonClick(ClickEvent event) {
 		    	getUI().getNavigator().navigateTo(PythonUI.NAME);
+		    }
+		});
+		
+    	// Nappi, josta aukeaa ohjen‰kym‰
+		ohje.addClickListener(new Button.ClickListener() {
+		    public void buttonClick(ClickEvent event) {
+		    	OhjePopup o = new OhjePopup();
+		    	UI.getCurrent().addWindow(o);
+		    }
+		});
+		
+    	// Nappi, josta aukeaa mallivastaus-n‰kym‰
+		naytaVastaus.addClickListener(new Button.ClickListener() {
+		    public void buttonClick(ClickEvent event) {
+		    	Mallivastaus mv = new Mallivastaus(malliVastaus);
+		    	UI.getCurrent().addWindow(mv);
+		    	naytaVastaus.setEnabled(false);
 		    }
 		});
 		
@@ -206,7 +233,7 @@ public class Editori extends Panel implements View {
 		tehtavaTyyppi = "muuttujat";
 		ArrayList<String> apu = new ArrayList<String>();
 		apu = db.annaTehtava(tehtavaTyyppi);
-		tehtavanAnto = apu.get(0);
+		tehtavanAnto = "Teht‰v‰: " + apu.get(0);
 		oikeaTuloste = apu.get(1);
 		malliVastaus = apu.get(2);
 		tehtAnto.setValue(tehtavanAnto);

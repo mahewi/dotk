@@ -15,7 +15,6 @@ public class MuuttujatPopup extends Window {
 	
 	private Label tutoriaali = new Label("");
 	private Button sulje = new Button("Sulje");
-	private Panel tuto = new Panel();
 	
 	public MuuttujatPopup() {
         super("Tutoriaali: Muuttujat Pythonissa");
@@ -26,9 +25,6 @@ public class MuuttujatPopup extends Window {
         
         VerticalLayout vlay = new VerticalLayout();
         
-        tuto.setWidth("80%");
-        tuto.setHeight("60%");
-        tuto.setContent(tutoriaali);
         tutoriaali.setContentMode(ContentMode.HTML);
         String teksti = "<p>Muuttujat ovat paikkoja/lokeroita, joihin tallennetaan tietoa. Tiedolla on aina jokin tyyppi. "
         		+ "Yleisimpiä tietotyyppejä ovat muun muassa: kokonaisluku (<i>int</i>), merkkijono (<i>String</i>), liukuluku (<i>float</i>) ja totuusarvo (<i>boolean</i>)."
