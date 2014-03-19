@@ -14,6 +14,8 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.themes.Reindeer;
+import com.vaadin.ui.themes.Runo;
 import com.vaadin.navigator.Navigator;
 
 /**
@@ -22,7 +24,7 @@ import com.vaadin.navigator.Navigator;
  * @author Marco Willgren & Tatu Sepp‰-Lassila
  *
  */
-public class PythonUI extends HorizontalSplitPanel implements View {
+public class PythonUI extends Panel implements View {
 		
 	public static final String NAME = "pythonView";
 	private Button takaisin = new Button("Takaisin");
@@ -47,10 +49,11 @@ public class PythonUI extends HorizontalSplitPanel implements View {
      * Metodissa m‰‰ritell‰‰n n‰kym‰n graafinen ulkoasu ja rekisterˆid‰‰n komponenttien toiminnallisuudet.
      */
     public void initLayout() {
-    	
-    	String ohjeTeksti = "<p><b class='esittelyotsikko'>Teht‰v‰n‰kym‰</b> <br></br> Teht‰v‰n‰kym‰ss‰ voit valita haluamasi teht‰v‰tyypin."
-    			+ " Painamalla tietty‰ teht‰v‰tyyppi‰ ohjelma avaa automaattisesti uuden teht‰v‰n. Voit myˆs lukea teht‰v‰alueisiin"
-    			+ " liittyvi‰ tutoriaaleja (oppimismateriaaleja), jotka avustavat teht‰vien tekemisess‰ ja alkuun p‰‰semisess‰.</p>";
+    	String ohjeTeksti = "<p><b class='esittelyotsikko'>Teht‰v‰n‰kym‰</b> <br></br> ï Teht‰v‰n‰kym‰ss‰ voit valita haluamasi teht‰v‰tyypin."
+    			+ " Painamalla tietty‰ teht‰v‰tyyppi‰ ohjelma avaa automaattisesti uuden teht‰v‰n.<br></br> ï Voit myˆs lukea teht‰v‰alueisiin"
+    			+ " liittyvi‰ tutoriaaleja (oppimismateriaaleja), jotka avustavat teht‰vien tekemisess‰ ja alkuun p‰‰semisess‰.<br></br> ï Ohjelmassa on mahdollista"
+    			+ " lukea tutoriaalia ja tehd‰ teht‰v‰‰ samaa aikaa. Avaa vain tutoriaali ennen kuin painat teht‰v‰‰n siirtymispainiketta!<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+    			+ " ª Voit muuttaa tutoriaali-ikkunan kokoa haluamasi kokoiseksi vet‰m‰ll‰ ikunnan oikeassa alalaidassa olevasta s‰‰tˆosasta.</p>";
     	ohje.setContentMode(ContentMode.HTML);
     	
     	// Painike, josta p‰‰see takaisin aloitusn‰kym‰‰n.
@@ -119,14 +122,16 @@ public class PythonUI extends HorizontalSplitPanel implements View {
 				UI.getCurrent().addWindow(metodit);
 			}
 		});
-		
-		setLocked(true);
-		setSplitPosition(15, HorizontalSplitPanel.Unit.PERCENTAGE);
+		HorizontalSplitPanel hsplit = new HorizontalSplitPanel();
+		hsplit.setLocked(true);
+		hsplit.setSplitPosition(15, HorizontalSplitPanel.Unit.PERCENTAGE);
+		hsplit.setStyleName(Reindeer.SPLITPANEL_SMALL);
+		setContent(hsplit);
 		
 		VerticalLayout vasenLay = new VerticalLayout();
 		VerticalLayout oikeaLay = new VerticalLayout();
-		addComponent(vasenLay);
-		addComponent(oikeaLay);
+		hsplit.addComponent(vasenLay);
+		hsplit.addComponent(oikeaLay);
 		
         ohje.setValue(ohjeTeksti);
 		ohjePaneeli.setWidth("80%");
@@ -141,7 +146,8 @@ public class PythonUI extends HorizontalSplitPanel implements View {
         muuttujaTuto.setStyleName("tehtavaStyle");
         ehtoTuto.setStyleName("tehtavaStyle");
         toistoTuto.setStyleName("tehtavaStyle");
-        metodiTuto.setStyleName("tehtavaStyle");
+        metodiTuto.setStyleName("tutoriaaliStyle");
+        takaisin.setStyleName(Runo.BUTTON_DEFAULT);
         
         vasenLay.addComponent(takaisin);
         vasenLay.addComponent(otsikko);

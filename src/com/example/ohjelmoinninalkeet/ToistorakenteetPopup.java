@@ -9,6 +9,7 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.themes.Runo;
 
 public class ToistorakenteetPopup extends Window {
 	
@@ -48,8 +49,8 @@ public class ToistorakenteetPopup extends Window {
         		+ " toistorakennetta. Python-kielessä on myös mahdollista käyttää ns. <i>for</i>-rakennetta, joka on todella käyttökelpoinen etenkin tilanteissa, kun halutaan"
         		+ " käydä läpi taulukoita ja muita tallennusrakenteita. <i>for</i>-rakenteen syntaksia ei käydä tässä tutoriaalissa tarkemmin läpi.</p>";
         tutoriaali.setValue(teksti);
-        sulje.setStyleName("suljeStyle");
-        
+        sulje.setStyleName(Runo.BUTTON_DEFAULT);
+        sulje.setWidth("25%");
         vlay.addComponent(tutoriaali);
         vlay.addComponent(sulje);
         vlay.setComponentAlignment(sulje, Alignment.BOTTOM_CENTER);

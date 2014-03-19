@@ -5,6 +5,7 @@ import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.themes.Runo;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -17,7 +18,8 @@ public class PalautePopup extends Window {
         center();
         
         Button sulje = new Button("Sulje");
-        sulje.setStyleName("suljeStyle");
+        sulje.setStyleName(Runo.BUTTON_DEFAULT);
+        sulje.setWidth("25%");
         Label palaute = new Label(oikeellisuus);
         palaute.setStyleName("palauteStyle");
         
@@ -29,7 +31,7 @@ public class PalautePopup extends Window {
         sisalto.addComponent(palaute);
         sisalto.addComponent(sulje);
         sisalto.setMargin(true);
-        sisalto.setComponentAlignment(sulje, Alignment.BOTTOM_CENTER);
+        sisalto.setComponentAlignment(sulje, Alignment.MIDDLE_CENTER);
         sisalto.setComponentAlignment(palaute, Alignment.MIDDLE_CENTER);
         setContent(sisalto);
         

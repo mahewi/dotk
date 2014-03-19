@@ -9,6 +9,7 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.themes.Runo;
 
 public class EhtolauseetPopup extends Window {
 	
@@ -47,8 +48,8 @@ public class EhtolauseetPopup extends Window {
         		+ "<i>vertailtava = 10;<br></br> if vertailtava > 11:<br> &nbsp;&nbsp; print " + "''vertailtava on suurempi kuin 11''" + ";<br> else: <br> &nbsp;&nbsp; print " + "''vertailtava on pienempi kuin 11''" + ";</i><br></br>"
         		+ " </p>";
         tutoriaali.setValue(teksti);
-        sulje.setStyleName("suljeStyle");
-        
+        sulje.setStyleName(Runo.BUTTON_DEFAULT);
+        sulje.setWidth("25%");
         vlay.addComponent(tutoriaali);
         vlay.addComponent(sulje);
         vlay.setComponentAlignment(sulje, Alignment.BOTTOM_CENTER);

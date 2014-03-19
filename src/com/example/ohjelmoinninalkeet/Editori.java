@@ -14,6 +14,7 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.themes.Runo;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -62,13 +63,14 @@ public class Editori extends Panel implements View {
 		otsikko.setContentMode(ContentMode.HTML);
 		suorita.setStyleName("suoritaStyle");
 		arvioi.setStyleName("arvioiStyle");
-		takaisin.setStyleName("takaisinStyle");
+		takaisin.setStyleName(Runo.BUTTON_DEFAULT);
 		tehtAnto.setStyleName("tehtAntoStyle");
 		tulosteOtsikko.setStyleName("tulosteOtsikkoStyle");
+		takaisin.setWidth("250px");
 		
 		// M‰‰ritet‰‰n VerticalLayoutin sis‰‰n tulevat Layoutit
 		HorizontalLayout ylaHlay = new HorizontalLayout();
-		ylaHlay.setWidth("100%");
+		//ylaHlay.setWidth("100%");
 		HorizontalLayout ylaOtsikkoHlay = new HorizontalLayout();
 		ylaOtsikkoHlay.setWidth("100%");
 		HorizontalLayout ylaKeskiHlay = new HorizontalLayout();
@@ -102,7 +104,15 @@ public class Editori extends Panel implements View {
 		suorita.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				tulosteAlue.setValue(toPython(tekstikentta.getValue()));
-				arvioi.setEnabled(true);  // Napin painalluksen j‰lkeen aktivoidaan "Arvioi"-painike
+				if (tarkistaKentta(tekstikentta) == true && tarkistaKentta(tulosteAlue) == true) {
+					arvioi.setEnabled(true);  // Napin painalluksen j‰lkeen aktivoidaan "Arvioi"-painike
+				}
+				else if (tarkistaKentta(tekstikentta) == false) {
+					Notification.show("VIRHE!", "Et voi suorittaa ohjelmaa, jota ei ole olemassa!", Notification.Type.ERROR_MESSAGE);
+				}
+				else {
+					Notification.show("VIRHE!", "Ohjelmasi ei mennyt k‰‰nt‰j‰st‰ l‰pi!", Notification.Type.ERROR_MESSAGE);
+				}
 			}
 		});
 		
@@ -212,5 +222,12 @@ public class Editori extends Panel implements View {
 			totuus = true;
 		}
 		return totuus;
+	}
+	
+	public boolean tarkistaKentta(TextArea ta) {
+		if (ta.getValue() == "") {
+			return false;
+		}
+		return true;
 	}
 }

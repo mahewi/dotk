@@ -9,6 +9,7 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.themes.Runo;
 
 public class MetoditPopup extends Window {
 	
@@ -45,8 +46,8 @@ public class MetoditPopup extends Window {
         		+ "Esitet‰‰n t‰st‰ seuraavaksi yksinkertainen esimerkki, jossa muuttujan <i>x</i> arvoksi asetetaan 10: <br></br><i> def palautaKymmenen():<br>&nbsp;&nbsp;return 10;<br></br>"
         		+ "x = palautaKymmenen();</i></p>"; 
         tutoriaali.setValue(teksti);
-        sulje.setStyleName("suljeStyle");
-        
+        sulje.setStyleName(Runo.BUTTON_DEFAULT);
+        sulje.setWidth("25%");
         vlay.addComponent(tutoriaali);
         vlay.addComponent(sulje);
         vlay.setComponentAlignment(sulje, Alignment.BOTTOM_CENTER);

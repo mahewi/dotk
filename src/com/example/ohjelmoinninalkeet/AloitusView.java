@@ -43,7 +43,6 @@ public class AloitusView extends Panel implements View {
 		esittely.setContentMode(ContentMode.HTML);
 		kielet.setContentMode(ContentMode.HTML);
 		tekijat.setContentMode(ContentMode.HTML);
-		
 		String teksti = "<p><b class='esittelyotsikko'>Mikä on ohjelmoinnin alkeet -sovellus?</b> <br></br> Ohjelmoinnin alkeet -sovelluksessa on ohjelmoimisen perusteisiin liittyviä tehtäviä ja ohjeita. "
 				+ "Tehtävät ovat suunnattu aloitteleville ohjelmoijille, eivätkä täten vaadi aiempaa ohjelmointiosaamista. Tehtävien yhteydessä on mahdollisuus selata aihealuetta koskevia oppaita/videoita ja onkin suotavaa "
 				+ "tehdä näin, mikäli oppimiskokemuksesta haluaa ottaa kaiken irti. <br></br>"
@@ -63,6 +62,7 @@ public class AloitusView extends Panel implements View {
 		
 		HorizontalSplitPanel split = new HorizontalSplitPanel();
 		setContent(split);
+		split.setStyleName(Reindeer.SPLITPANEL_SMALL);
 		
 		VerticalLayout vasenLayout = new VerticalLayout();
 		VerticalLayout oikeaLayout = new VerticalLayout();

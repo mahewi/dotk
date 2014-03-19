@@ -9,6 +9,7 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.themes.Runo;
 
 public class MuuttujatPopup extends Window {
 	
@@ -45,8 +46,8 @@ public class MuuttujatPopup extends Window {
         		+ "nimessä ei saa olla välilyöntiä, vaan monisanainen muuttujan nimi tulee kirjoittaa jommalla kummalla seuraavaksi esitetyllä tyylillä: "
         		+ "<i>nimiMuuttuja</i> tai <i>nimi_muuttuja</i>. Muuttujan nimi ei saa siis myöskään alkaa isolla kirjaimella eikä numerolla.</p>";
         tutoriaali.setValue(teksti);
-        sulje.setStyleName("suljeStyle");
-        
+        sulje.setStyleName(Runo.BUTTON_DEFAULT);
+        sulje.setWidth("25%");
         vlay.addComponent(tutoriaali);
         vlay.addComponent(sulje);
         vlay.setComponentAlignment(sulje, Alignment.BOTTOM_CENTER);
