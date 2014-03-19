@@ -13,7 +13,7 @@ import com.vaadin.ui.themes.Runo;
 
 public class Mallivastaus extends Window {
 	
-	TextArea vastaus = new TextArea();
+	private TextArea vastaus = new TextArea();
 	
 	public Mallivastaus(String mallivastaus) {
     
