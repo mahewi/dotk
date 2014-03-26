@@ -11,6 +11,12 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.themes.Runo;
 
+/**
+ * Luokka m‰‰rittelee ponnahdusikkunan, joka aukeaa k‰ytt‰j‰n painaessa "Tutoriaali: Muuttujat"-painiketta.
+ * Ikkuna sis‰lt‰‰ Python-muuttujia koskevan ohjeistuksen
+ * @author Marco Willgren & Tatu Sepp‰-Lassila
+ *
+ */
 public class MuuttujatPopup extends Window {
 	
 	private Label tutoriaali = new Label("");

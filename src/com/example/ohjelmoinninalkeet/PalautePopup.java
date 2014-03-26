@@ -11,6 +11,12 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
+/**
+ * Luokka m‰‰ritt‰‰ ponnahdusikkunan, joka aukeaa k‰ytt‰j‰n painaessa "Arvioi"-paniketta.
+ * N‰kym‰ sis‰lt‰‰ tiedon vastauksen oikeellisuudesta.
+ * @author Marco Willgren & Tatu Sepp‰-Lassila
+ *
+ */
 public class PalautePopup extends Window {
 	
     public PalautePopup(String oikeellisuus) {

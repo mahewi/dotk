@@ -11,6 +11,12 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.themes.Runo;
 
+/**
+ * Luokka m‰‰rittelee ponnahdusikkunan, joka aukeaa k‰ytt‰j‰n painaessa "OHJE"-painiketta.
+ * Ikkuna sis‰lt‰‰ Editori-n‰kym‰n ohjeet, jotka kertovat kuinka vastaus tulee kirjoittaa ja miten se arvioidaan. 
+ * @author Marco Willgren & Tatu Sepp‰-Lassila
+ *
+ */
 public class OhjePopup extends Window {
 	
 	public OhjePopup() {

@@ -15,6 +15,9 @@ import com.vaadin.ui.UI;
 /**
  * Luokassa alustetaan navigaattori-olio, jonka avulla ohjelmassa siirrytään eri näkymien välillä.
  * Navigaattoriolioon rekisteröidään kaikki halutut näkymät.
+ * 
+ * Ohjelmassa käytetään sekaisin eri teemoja: Runo, Reindeer ja Default.
+ * 
  * @author Marco Willgren & Tatu Seppä-Lassila
  *
  */

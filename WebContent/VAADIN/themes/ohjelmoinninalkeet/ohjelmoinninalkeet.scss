@@ -12,68 +12,174 @@
 
   /* Insert your theme rules here */
   
- h1.etuSivuOtsikko {font-size:36px; text-align:center; margin-top:7%;}
+ h1.etuSivuOtsikko {
+ 	font-size:36px; 
+ 	text-align:center; 
+ 	margin-top:7%;
+ }
  
- h1.python {font-size:36px; text-align:center; margin-bottom:5%;}
+ h1.python {
+ 	font-size:36px; 
+ 	text-align:center; 
+ 	margin-bottom:5%;
+ }
  
- h1.editoriOtsikko {font-size:36px; text-align:center; margin-bottom:2%;}
+ h1.editoriOtsikko {
+ 	font-size:36px; 
+ 	text-align:center; 
+ 	margin-bottom:2%;
+ }
  
- h2 {font-size:26px !important; text-align:center; margin-top:10%}
+ h2 {
+ 	font-size:26px !important; 
+ 	text-align:center; 
+ 	margin-top:10%
+ }
  
- b.esittelyotsikko {font-size:26px; color:#f14c1a;}
+ b.esittelyotsikko {
+ 	font-size:26px; 
+ 	color:#f14c1a;
+ }
  
- p {font-size:17px; text-align:rigth; margin-left:20px; margin-top:20px; margin-right:20px; line-height:1.5;}
+ p {
+ 	font-size:17px; 
+ 	text-align:rigth; 
+ 	margin-left:20px; 
+ 	margin-top:20px; 
+ 	margin-right:20px; 
+ 	line-height:1.5;
+ }
  
- .v-button-caption {font-size:16px;}
+ .v-button-caption {
+ 	font-size:16px;
+ }
  
- .v-button {margin-left:2%; margin-top:5%; margin-bottom:5%; width:90%; border-style:none;}
+ .v-button {
+ 	margin-left:2%; 
+ 	margin-top:5%; 
+ 	margin-bottom:5%; 
+ 	width:90%; 
+ 	border-style:none;
+ }
  
- .v-panel {margin-top:3%;}
+ .v-panel {
+ 	margin-top:3%;
+ }
  
- .v-splitpanel-horizontal {background:#f5f5f5;}
+ .v-splitpanel-horizontal {
+ 	background:#f5f5f5;
+ }
  
- .v-vertical {background:#f5f5f5;}
+ .v-vertical {
+ 	background:#f5f5f5;
+ }
  
- .tulosteStyle {margin-top:2%;}
+ .tulosteStyle {
+ 	margin-top:2%;
+ }
  
- .tekijaStyle {font-size:14px; margin-top:40%; margin-right:2%;}
+ .tekijaStyle {
+ 	font-size:14px; 
+ 	margin-top:40%;
+ }
  
- .tehtavaStyle .v-button-caption {color:black; font-size:16px;}
+ .tehtavaStyle .v-button-caption {
+ 	color:black; 
+ 	font-size:16px;
+ }
  
- .tehtavaStyle {margin-bottom:0%;}
+ .tehtavaStyle {
+ 	margin-bottom:0%;
+ }
  
- .tutoriaaliStyle {margin-bottom:20%;}
+ .tutoriaaliStyle {
+ 	margin-bottom:20%;
+ }
  
- .tutoriaaliStyle .v-button-caption {color:black; font-size:16px;}
+ .tutoriaaliStyle .v-button-caption {
+ 	color:black; 
+ 	font-size:16px;
+ }
  
- .tehtavanAnto {font-size:30px; text-align:center;}
+ .tehtavanAnto {
+ 	font-size:30px; 
+ 	text-align:center;
+ }
  
- .takaisinStyle {margin-top:2%; margin-left:2%; margin-bottom:0%; width:10%;}
+ .takaisinStyle {
+ 	margin-top:2%; 
+ 	margin-left:2%; 
+ 	margin-bottom:0%; 
+ 	width:10%;
+ }
  
- .arvioiStyle {margin-top:5%; margin-bottom:2%; width:50%; margin-right:0%;}
+ .arvioiStyle {
+ 	margin-top:5%; 
+ 	margin-bottom:2%; 
+ 	width:50%; 
+ 	margin-right:0%;
+ }
  
- .arvioiStyle .v-button-caption {color:black;}
+ .arvioiStyle .v-button-caption {
+ 	color:black;
+ }
  
- .suoritaStyle {margin-top:5%; margin-left:35%; margin-right:0%; margin-bottom:2%; width:50%;}
+ .suoritaStyle {
+ 	margin-top:5%; 
+ 	margin-left:35%; 
+ 	margin-right:0%; 
+ 	margin-bottom:2%; 
+ 	width:50%;
+ }
  
- .suoritaStyle .v-button-caption {color:black;}
+ .suoritaStyle .v-button-caption {
+ 	color:black;
+ }
  
- .naytaVastausStyle {width:50%; margin-left:90%;}
+ .naytaVastausStyle {
+ 	width:50%; 
+ 	margin-left:90%;
+ }
  
- .pythonStyle {width:40%; margin-top:5%;}		
+ .pythonStyle {
+ 	width:40%; 
+ 	margin-top:5%;
+ }		
  
- .pythonStyle .v-button-caption {color:black; font-size:18px;}
+ .pythonStyle .v-button-caption {
+ 	color:black; 
+ 	font-size:18px;
+ }
  
- .tehtAntoStyle {margin-left:10%; font-size:18px; color:#f14c1a;}
+ .tehtAntoStyle {
+ 	margin-left:10%; 
+ 	font-size:18px; 
+ 	color:#f14c1a;
+ }
  
- .tulosteOtsikkoStyle {margin-left:10%; font-size:18px; color:#f14c1a;}
+ .tulosteOtsikkoStyle {
+ 	margin-left:10%; 
+ 	font-size:18px; 
+ 	color:#f14c1a;
+ }
  
- .suljeStyle {width:50%; margin-bottom:0%;}
+ .suljeStyle {
+ 	width:50%; 
+ 	margin-bottom:0%;
+ }
  
- .suljeStyle .v-button-caption {color:black;}
+ .suljeStyle .v-button-caption {
+ 	color:black;
+ }
  
- .palauteStyle {font-size:22px; text-align:center;}
+ .palauteStyle {
+ 	font-size:22px; 
+ 	text-align:center;
+ }
  
- .ohjeStyle {}
+ .ohjeStyle .v-button-caption {
+ 	font-family:Calibri; 
+ 	font-weight:bolder;
+ }
 
 }

@@ -8,6 +8,7 @@ import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.HorizontalSplitPanel;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
@@ -23,11 +24,13 @@ import com.vaadin.ui.themes.Reindeer;
  */
 public class AloitusView extends Panel implements View {
 	
+	// Muuttuja jota Navigator-olio k‰ytt‰‰ n‰kym‰n identifioimiseen. ("" = Navigator-olio siirtyy t‰h‰n automaattisesti ensin)
 	public static final String NAME = "";
+	
 	private Label otsikko = new Label("<h1 class='etuSivuOtsikko'>Ohjelmoinnin alkeet</h1>");
 	private Label esittely = new Label("");
 	private Label kielet = new Label("<h2>Valitse ohjelmointikieli</h2>");
-	private Label tekijat = new Label("<i>(c) Marco Willgren & Tatu Sepp‰-Lassila, 2014</i>");
+	private Label tekijat = new Label("<i>&copy Marco Willgren & Tatu Sepp‰-Lassila, 2014</i>");
 	private Button python = new Button("Python");
 	private Panel esittelyPaneeli = new Panel();
 
@@ -66,6 +69,8 @@ public class AloitusView extends Panel implements View {
 		
 		VerticalLayout vasenLayout = new VerticalLayout();
 		VerticalLayout oikeaLayout = new VerticalLayout();
+		HorizontalLayout oikeaAla = new HorizontalLayout();
+		oikeaAla.setSizeFull();
 		
 		split.addComponent(vasenLayout);
 		split.addComponent(oikeaLayout);
@@ -83,11 +88,12 @@ public class AloitusView extends Panel implements View {
 		vasenLayout.addComponent(esittelyPaneeli);
 		oikeaLayout.addComponent(kielet);
 		oikeaLayout.addComponent(python);
-		oikeaLayout.addComponent(tekijat);
+		oikeaLayout.addComponent(oikeaAla);
+		oikeaAla.addComponent(tekijat);
 		
 		vasenLayout.setComponentAlignment(esittelyPaneeli, Alignment.MIDDLE_CENTER);
 		oikeaLayout.setComponentAlignment(python, Alignment.MIDDLE_CENTER);
-		oikeaLayout.setComponentAlignment(tekijat, Alignment.BOTTOM_RIGHT);
+		oikeaAla.setComponentAlignment(tekijat, Alignment.BOTTOM_CENTER);
 	}
 	
 	@Override

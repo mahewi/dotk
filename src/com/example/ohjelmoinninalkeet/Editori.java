@@ -27,7 +27,8 @@ import java.util.ArrayList;
  *
  */
 public class Editori extends Panel implements View {
-
+	
+	// Muuttuja jota Navigator-olio käyttää näkymän identifioimiseen
 	public static final String NAME = "editoriView";
 	
 	// Komponentit
@@ -86,15 +87,14 @@ public class Editori extends Panel implements View {
 		HorizontalLayout alaHlay = new HorizontalLayout();
 		alaHlay.setWidth("40%");
 		
+		// Asetetaan komponentit määriteltyihin layoutteihin
 		ylaHlay.addComponent(takaisin);
-		alempiYlaHlay.addComponent(ohje);
+		alempiYlaHlay.addComponent(ohje);	
 		ylaOtsikkoHlay.addComponent(otsikko);
 		ylaKeskiHlay.addComponent(tehtAnto);
-		ylaKeskiHlay.addComponent(tulosteOtsikko);
-		
+		ylaKeskiHlay.addComponent(tulosteOtsikko);	
 		keskiHlay.addComponent(tekstikentta);
-		keskiHlay.addComponent(tulosteAlue);
-		
+		keskiHlay.addComponent(tulosteAlue);	
 		alaHlay.addComponent(suorita);
 		alaHlay.addComponent(arvioi);
 		alaHlay.addComponent(naytaVastaus);
@@ -102,6 +102,7 @@ public class Editori extends Panel implements View {
 		keskiHlay.setComponentAlignment(tekstikentta, Alignment.MIDDLE_CENTER);
 		keskiHlay.setComponentAlignment(tulosteAlue, Alignment.MIDDLE_CENTER);
 		
+		// Asetetaan eri layoutit oikeassa järjestyksessä VerticalLayoutin sisälle
 		vlay.addComponent(ylaHlay);
 		vlay.addComponent(alempiYlaHlay);
 		vlay.addComponent(ylaOtsikkoHlay);
@@ -126,7 +127,7 @@ public class Editori extends Panel implements View {
 		});
 		
 		// Tapahtuman käsittely arvioi-napille. Napin painallus avaa ponnahdusikkunan
-		// , jonka sisältö riippu vastauksen oikeellisuudesta.
+		// ,jonka sisältö riippu vastauksen oikeellisuudesta.
 		arvioi.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				if (arvioiVastaus()) {
@@ -166,7 +167,7 @@ public class Editori extends Panel implements View {
 		    }
 		});
 		
-		setContent(vlay);
+		setContent(vlay); // Asetetaan lopuksi näkymä paneelin sisälle
 	}
 	
 	/**

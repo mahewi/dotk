@@ -25,8 +25,10 @@ import com.vaadin.navigator.Navigator;
  *
  */
 public class PythonUI extends Panel implements View {
-		
+	
+	// Muuttuja jota Navigator-olio k‰ytt‰‰ n‰kym‰n identifioimiseen
 	public static final String NAME = "pythonView";
+	
 	private Button takaisin = new Button("Takaisin");
 	private Label otsikko = new Label("<h1 class='python'>Python</h1>");
 	private Button teht1 = new Button("Teht‰v‰: Muuttujat");
@@ -53,7 +55,7 @@ public class PythonUI extends Panel implements View {
     			+ " Painamalla tietty‰ teht‰v‰tyyppi‰ ohjelma avaa automaattisesti uuden teht‰v‰n.<br></br> ï Voit myˆs lukea teht‰v‰alueisiin"
     			+ " liittyvi‰ tutoriaaleja (oppimismateriaaleja), jotka avustavat teht‰vien tekemisess‰ ja alkuun p‰‰semisess‰.<br></br> ï Ohjelmassa on mahdollista"
     			+ " lukea tutoriaalia ja tehd‰ teht‰v‰‰ samaa aikaa. Avaa vain tutoriaali ennen kuin painat teht‰v‰‰n siirtymispainiketta!<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-    			+ " ª Voit muuttaa tutoriaali-ikkunan kokoa haluamasi kokoiseksi vet‰m‰ll‰ ikunnan oikeassa alalaidassa olevasta s‰‰tˆosasta.</p>";
+    			+ " ª Voit muuttaa tutoriaali-ikkunan kokoa haluamasi kokoiseksi vet‰m‰ll‰ ikunnan oikeassa alalaidassa olevasta s‰‰tˆvivusta.</p>";
     	ohje.setContentMode(ContentMode.HTML);
     	
     	// Painike, josta p‰‰see takaisin aloitusn‰kym‰‰n.
@@ -122,6 +124,7 @@ public class PythonUI extends Panel implements View {
 				UI.getCurrent().addWindow(metodit);
 			}
 		});
+		
 		HorizontalSplitPanel hsplit = new HorizontalSplitPanel();
 		hsplit.setLocked(true);
 		hsplit.setSplitPosition(15, HorizontalSplitPanel.Unit.PERCENTAGE);
