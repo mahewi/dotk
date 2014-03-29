@@ -7,8 +7,8 @@ import java.util.ArrayList;
 /**
  * Tietokanta luokka sis‰lt‰‰ tietokantaan liittyv‰t toiminnallisuudet.
  * Yhteydenoton ja tietojen hakemisen.
+ * 
  * @author Marco Willgren & Tatu Sepp‰-Lassila
- *
  */
 public class Tietokanta {
 	

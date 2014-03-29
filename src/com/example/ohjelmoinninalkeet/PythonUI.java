@@ -21,8 +21,8 @@ import com.vaadin.navigator.Navigator;
 /**
  * PythonUI-n‰kym‰ m‰‰rittelee Python-ohjelmointikielen "kotisivun" ohjelmassa. N‰kym‰ sis‰lt‰‰
  * Mahdollisuuden valita eri teht‰v‰tyyppej‰.
+ * 
  * @author Marco Willgren & Tatu Sepp‰-Lassila
- *
  */
 public class PythonUI extends Panel implements View {
 	
@@ -57,7 +57,7 @@ public class PythonUI extends Panel implements View {
     			+ " lukea tutoriaalia ja tehd‰ teht‰v‰‰ samaa aikaa. Avaa vain tutoriaali ennen kuin painat teht‰v‰‰n siirtymispainiketta!<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
     			+ " ª Voit muuttaa tutoriaali-ikkunan kokoa haluamasi kokoiseksi vet‰m‰ll‰ ikunnan oikeassa alalaidassa olevasta s‰‰tˆvivusta.</p>";
     	ohje.setContentMode(ContentMode.HTML);
-    	
+
     	// Painike, josta p‰‰see takaisin aloitusn‰kym‰‰n.
 		takaisin.addClickListener(new Button.ClickListener() {
 		    public void buttonClick(ClickEvent event) {

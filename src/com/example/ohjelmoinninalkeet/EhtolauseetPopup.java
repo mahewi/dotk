@@ -14,8 +14,8 @@ import com.vaadin.ui.themes.Runo;
 /**
  * Luokka m‰‰rittelee ponnahdusikkunan, joka aukeaa k‰ytt‰j‰n painaessa "Tutoriaali: Ehtolauseet"-painiketta.
  * Ikkuna sis‰lt‰‰ ehtolauseita (Pythonissa) koskevan ohjeistuksen
+ * 
  * @author Marco Willgren & Tatu Sepp‰-Lassila
- *
  */
 public class EhtolauseetPopup extends Window {
 	
@@ -62,6 +62,7 @@ public class EhtolauseetPopup extends Window {
         vlay.setMargin(true);
         setContent(vlay);
         
+        // Tapahtuman k‰sittely sulje-painikkeelle. Napin painallus sulkee ikkunan.
         sulje.addClickListener(new ClickListener() {
             public void buttonClick(ClickEvent event) {
                 close();

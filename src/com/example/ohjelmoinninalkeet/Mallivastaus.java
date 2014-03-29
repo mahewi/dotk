@@ -20,19 +20,19 @@ import com.vaadin.ui.themes.Runo;
 
 /**
  * Luokka m‰‰rittelee ponnahdusikkunan, joka aukeaa k‰ytt‰j‰n painaessa "Mallivastaus"-painiketta.
- * Ikkuna sis‰lt‰‰ teht‰v‰n mallivastauksen niin kirjoitetussa muodossa kuin graafisena esityksen‰. 
+ * Ikkuna sis‰lt‰‰ teht‰v‰n mallivastauksen niin kirjoitetussa muodossa kuin videoesityksen‰. 
+ * 
  * @author Marco Willgren & Tatu Sepp‰-Lassila
- *
  */
 public class Mallivastaus extends Window {
 	
-	Embedded video = new Embedded(null, new ExternalResource("https://www.youtube.com/v/mjQyXmlo46U&feature=youtu.be"));
+	Embedded video = new Embedded(null);
 	private TextArea vastaus = new TextArea();
 	private Panel ohjeet = new Panel();
 	private Label ohje = new Label();
 	private String ohjeTeksti;
 	
-	public Mallivastaus(String mallivastaus) {
+	public Mallivastaus(String mallivastaus, String videoLinkki) {
     
 		super("Teht‰v‰n mallivastaus");
 	    center();
@@ -52,6 +52,7 @@ public class Mallivastaus extends Window {
 		vastaus.setRows(30);
 		vastaus.setStyleName("malliVastausTextStyle");
 	    
+		video.setSource(new ExternalResource(videoLinkki));
 		video.setStyleName("malliVastausVideoStyle");
         video.setMimeType("application/x-shockwave-flash");
         video.setParameter("allowFullScreen", "true");
@@ -85,6 +86,7 @@ public class Mallivastaus extends Window {
 		
 		setContent(hsplit);
 	    
+		// Tapahtuman k‰sittely sulje-painikkeelle. Napin painallus sulkee ikkunan.
 	    sulje.addClickListener(new ClickListener() {
 	        public void buttonClick(ClickEvent event) {
 	            close();

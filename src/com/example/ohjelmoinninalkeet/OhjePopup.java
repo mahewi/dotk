@@ -14,8 +14,8 @@ import com.vaadin.ui.themes.Runo;
 /**
  * Luokka m‰‰rittelee ponnahdusikkunan, joka aukeaa k‰ytt‰j‰n painaessa "OHJE"-painiketta.
  * Ikkuna sis‰lt‰‰ Editori-n‰kym‰n ohjeet, jotka kertovat kuinka vastaus tulee kirjoittaa ja miten se arvioidaan. 
+ * 
  * @author Marco Willgren & Tatu Sepp‰-Lassila
- *
  */
 public class OhjePopup extends Window {
 	
@@ -46,6 +46,7 @@ public class OhjePopup extends Window {
         sisalto.setMargin(true);
         setContent(sisalto);
         
+        // Tapahtuman k‰sittely sulje-painikkeelle. Napin painallus sulkee ikkunan.
         sulje.addClickListener(new ClickListener() {
             public void buttonClick(ClickEvent event) {
                 close();

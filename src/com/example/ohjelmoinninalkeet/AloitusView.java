@@ -19,8 +19,8 @@ import com.vaadin.ui.themes.Reindeer;
 /**
  * N‰kym‰ toimii ohjelman kotisivuna/aloitusn‰kym‰n‰. Se sis‰lt‰‰ esittelytekstin ja mahdollisuuden siirty‰
  * harjoittelemaan tietyn ohjelmointikielen teht‰vi‰.
+ * 
  * @author Marco Willgren & Tatu Sepp‰-Lassila
- *
  */
 public class AloitusView extends Panel implements View {
 	

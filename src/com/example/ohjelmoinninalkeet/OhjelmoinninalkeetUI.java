@@ -19,7 +19,6 @@ import com.vaadin.ui.UI;
  * Ohjelmassa k‰ytet‰‰n sekaisin eri teemoja: Runo, Reindeer ja Default.
  * 
  * @author Marco Willgren & Tatu Sepp‰-Lassila
- *
  */
 public class OhjelmoinninalkeetUI extends UI {
 

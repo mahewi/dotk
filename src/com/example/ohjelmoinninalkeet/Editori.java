@@ -22,9 +22,9 @@ import java.util.ArrayList;
 /**
  * Editori-luokka muodostaa näkymän, jossa käyttäjä pääsee vastaamaan Python aiheisiin tehtävään.
  * Näkymässä on toiminnot vastauksen suorittamiseen Python-kääntäjän läpi sekä arvioiminen vertaamalla
- * sitä oikeaa tulostetta vastaan. 
+ * sitä oikeaa tulostetta vastaan.
+ *  
  * @author Marco Willgren & Tatu Seppä-Lassila
- *
  */
 public class Editori extends Panel implements View {
 	
@@ -46,6 +46,7 @@ public class Editori extends Panel implements View {
 	private String tehtavaTyyppi = "";
 	private String tehtavanAnto;
 	private String malliVastaus;
+	private String videoLinkki;
 	private String oikeaTuloste;
 	private Tietokanta db;
 	
@@ -161,7 +162,7 @@ public class Editori extends Panel implements View {
     	// Nappi, josta aukeaa mallivastaus-näkymä
 		naytaVastaus.addClickListener(new Button.ClickListener() {
 		    public void buttonClick(ClickEvent event) {
-		    	Mallivastaus mv = new Mallivastaus(malliVastaus);
+		    	Mallivastaus mv = new Mallivastaus(malliVastaus, "https://www.youtube.com/v/mjQyXmlo46U&feature=youtu.be"); // KORVAA LINKKI KUN TAULUT ON PÄIVITETTY -> videoLinkki
 		    	UI.getCurrent().addWindow(mv);
 		    	naytaVastaus.setEnabled(false);
 		    }
@@ -227,16 +228,16 @@ public class Editori extends Panel implements View {
 	/**
 	 * Metodi luo tietokantaolio ja -yhteyden. Satunnainen käyttäjän aiheen mukainen 
 	 * tehtävä haetaan tietokannasta.
-	 * 
 	 */
 	public void initDB() {
 		db = new Tietokanta();
-		tehtavaTyyppi = "muuttujat";
+		tehtavaTyyppi = "muuttujat"; // TÄMÄ ON TESTIARVO! POISTA KUN TAULUT OVAT VALMIIT!
 		ArrayList<String> apu = new ArrayList<String>();
 		apu = db.annaTehtava(tehtavaTyyppi);
 		tehtavanAnto = "Tehtävä: " + apu.get(0);
 		oikeaTuloste = apu.get(1);
 		malliVastaus = apu.get(2);
+		//videoLinkki = apu.get(3); AKTIVOI TÄMÄ KUN TAULUT ON PÄIVITETTY -> LISÄTTY VIDEOLINKKI
 		tehtAnto.setValue(tehtavanAnto);
 	}
 	
@@ -252,6 +253,11 @@ public class Editori extends Panel implements View {
 		return totuus;
 	}
 	
+	/**
+	 * Metodi tarkistaa, onko parametrina annetussa tekstialueessa mitään sisältöä.
+	 * @param ta
+	 * @return totuusarvo onko tekstialueessa sisältöä
+	 */
 	public boolean tarkistaKentta(TextArea ta) {
 		if (ta.getValue() == "") {
 			return false;
