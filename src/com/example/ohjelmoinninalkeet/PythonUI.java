@@ -41,7 +41,6 @@ public class PythonUI extends Panel implements View {
 	private Button metodiTuto = new Button("Tutoriaali: Metodit");
 	private Panel ohjePaneeli = new Panel();
 	private Label ohje = new Label("");
-	Tehtava t1 = new Tehtava();
 	
     public PythonUI() {
     	initLayout();
