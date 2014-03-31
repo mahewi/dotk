@@ -1,13 +1,16 @@
 package com.example.ohjelmoinninalkeet;
 
+import java.io.File;
+
 import com.vaadin.server.ExternalResource;
+import com.vaadin.server.FileResource;
+import com.vaadin.server.VaadinService;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
-import com.vaadin.ui.BrowserFrame;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Embedded;
-import com.vaadin.ui.Flash;
 import com.vaadin.ui.HorizontalSplitPanel;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextArea;
@@ -30,7 +33,11 @@ public class Mallivastaus extends Window {
 	private TextArea vastaus = new TextArea();
 	private Panel ohjeet = new Panel();
 	private Label ohje = new Label();
+	private Label ilmoitus = new Label();
 	private String ohjeTeksti;
+	private String ilmoitusTeksti;
+	private String tiedPolku;
+	private Image itku;
 	
 	public Mallivastaus(String mallivastaus, String videoLinkki) {
     
@@ -39,31 +46,21 @@ public class Mallivastaus extends Window {
 	    
 	    setHeight("80%");
 	    setWidth("80%");
-		
-	    ohje.setContentMode(ContentMode.HTML);
-	    ohjeTeksti = "<p>ï Voit avata videon <i>fullscreen</i>-tilassa painamalla videon alapuolella olevan teht‰v‰palkin oikeanpuoleisinta paniketta. <br></br> ï Mik‰li "
-	    		+ "teht‰v‰palkki ei ole n‰kyviss‰, siirr‰ hiiri videon p‰‰lle niin palkki aktivoituu.</p>";
-	    ohje.setValue(ohjeTeksti);
-		ohjeet.setWidth("60%");
-		ohjeet.setHeight("60%");
-		ohjeet.setContent(ohje);
 	    
 		vastaus.setWidth(80, TextArea.Unit.PERCENTAGE);
 		vastaus.setRows(30);
 		vastaus.setStyleName("malliVastausTextStyle");
-	    
-		video.setSource(new ExternalResource(videoLinkki));
-		video.setStyleName("malliVastausVideoStyle");
-        video.setMimeType("application/x-shockwave-flash");
-        video.setParameter("allowFullScreen", "true");
-		video.setWidth("560px");
-		video.setHeight("315px");
+	    vastaus.setValue(mallivastaus);
 		
 	    Button sulje = new Button("Sulje");
 	    sulje.setStyleName(Runo.BUTTON_DEFAULT);
 	    sulje.setWidth("25%");
 	    
-	    vastaus.setValue(mallivastaus);
+	    tiedPolku = VaadinService.getCurrent().getBaseDirectory().getAbsolutePath();
+	    FileResource resource = new FileResource(new File(tiedPolku + "/WEB-INF/images/cry.png"));
+	    itku = new Image("", resource);
+	    itku.setHeight("400px");
+	    itku.setHeight("400px");
 	    
 	    HorizontalSplitPanel hsplit = new HorizontalSplitPanel();
 		hsplit.setLocked(true);
@@ -72,7 +69,7 @@ public class Mallivastaus extends Window {
 		hsplit.setSizeFull();
 		
 		VerticalLayout vasenLay = new VerticalLayout();
-		VerticalLayout oikeaLay = new VerticalLayout();
+		final VerticalLayout oikeaLay = new VerticalLayout();
 
 		vasenLay.addComponent(vastaus);
 		vasenLay.setComponentAlignment(vastaus, Alignment.MIDDLE_CENTER);
@@ -80,9 +77,15 @@ public class Mallivastaus extends Window {
 		oikeaLay.setComponentAlignment(video, Alignment.MIDDLE_CENTER);
 		oikeaLay.addComponent(ohjeet);
 		oikeaLay.setComponentAlignment(ohjeet, Alignment.MIDDLE_CENTER);
+		oikeaLay.addComponent(ilmoitus);
+		oikeaLay.setComponentAlignment(ilmoitus, Alignment.MIDDLE_CENTER);
+		oikeaLay.addComponent(itku);
+		oikeaLay.setComponentAlignment(itku, Alignment.MIDDLE_CENTER);
 		
 		hsplit.addComponent(vasenLay);
 		hsplit.addComponent(oikeaLay);
+		
+		tarkistaVideo(videoLinkki); // Kutsutaan rutiinia, joka tarkistaa onko tehtavalle asetettu vastausvideota.
 		
 		setContent(hsplit);
 	    
@@ -92,6 +95,38 @@ public class Mallivastaus extends Window {
 	            close();
 	        }
 	    });
-    
+	    
+	}
+	
+	/**
+	 * Metodi tarkistaa onko tietokannasta haetulle teht‰v‰lle asetettu vastauvideota.
+	 * Video lˆytyy -> Video asetetaan nakymaan ohjetekstin kera.
+	 * Videota ei asetettu -> Vastausikkunaan piirtyy ilmoitus asiasta 
+	 * @param linkki
+	 */
+	public void tarkistaVideo(String linkki) {
+		if (linkki.equals("placeholder")) {
+			ilmoitus.setContentMode(ContentMode.HTML);
+			ilmoitusTeksti = "<h2 class='ilmoitus'>Teht‰v‰‰n ei ole (viel‰) saatavilla vastausvideota.</h2>";
+			ilmoitus.setValue(ilmoitusTeksti);
+			ohjeet.setVisible(false);
+		}
+		else {
+			itku.setVisible(false);
+			video.setSource(new ExternalResource(linkki));
+			video.setStyleName("malliVastausVideoStyle");
+	        video.setMimeType("application/x-shockwave-flash");
+	        video.setParameter("allowFullScreen", "true");
+			video.setWidth("560px");
+			video.setHeight("315px");
+			
+		    ohje.setContentMode(ContentMode.HTML);
+		    ohjeTeksti = "<p>ï Voit avata videon <i>fullscreen</i>-tilassa painamalla videon alapuolella olevan teht‰v‰palkin oikeanpuoleisinta paniketta. <br></br> ï Mik‰li "
+		    		+ "teht‰v‰palkki ei ole n‰kyviss‰, siirr‰ hiiri videon p‰‰lle niin palkki aktivoituu.</p>";
+		    ohje.setValue(ohjeTeksti);
+			ohjeet.setWidth("60%");
+			ohjeet.setHeight("60%");
+			ohjeet.setContent(ohje);
+		}
 	}
 }

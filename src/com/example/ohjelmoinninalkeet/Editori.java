@@ -160,9 +160,10 @@ public class Editori extends Panel implements View {
 		});
 		
     	// Nappi, josta aukeaa mallivastaus-näkymä
+		// Testivideolinkki: https://www.youtube.com/v/mjQyXmlo46U&feature=youtu.be
 		naytaVastaus.addClickListener(new Button.ClickListener() {
 		    public void buttonClick(ClickEvent event) {
-		    	Mallivastaus mv = new Mallivastaus(malliVastaus, "https://www.youtube.com/v/mjQyXmlo46U&feature=youtu.be"); // KORVAA LINKKI KUN TAULUT ON PÄIVITETTY -> videoLinkki
+		    	Mallivastaus mv = new Mallivastaus(malliVastaus, videoLinkki);
 		    	UI.getCurrent().addWindow(mv);
 		    	naytaVastaus.setEnabled(false);
 		    }
@@ -237,7 +238,7 @@ public class Editori extends Panel implements View {
 		tehtavanAnto = "Tehtävä: " + apu.get(0);
 		oikeaTuloste = apu.get(1);
 		malliVastaus = apu.get(2);
-		//videoLinkki = apu.get(3); AKTIVOI TÄMÄ KUN TAULUT ON PÄIVITETTY -> LISÄTTY VIDEOLINKKI
+		videoLinkki = apu.get(3); 
 		tehtAnto.setValue(tehtavanAnto);
 	}
 	
