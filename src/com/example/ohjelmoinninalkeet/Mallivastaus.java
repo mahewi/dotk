@@ -1,7 +1,10 @@
 package com.example.ohjelmoinninalkeet;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Random;
 
+import com.vaadin.event.MouseEvents;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.FileResource;
 import com.vaadin.server.VaadinService;
@@ -32,12 +35,16 @@ public class Mallivastaus extends Window {
 	Embedded video = new Embedded(null);
 	private TextArea vastaus = new TextArea();
 	private Panel ohjeet = new Panel();
+	private Panel kuvaPanel = new Panel();
 	private Label ohje = new Label();
 	private Label ilmoitus = new Label();
 	private String ohjeTeksti;
 	private String ilmoitusTeksti;
 	private String tiedPolku;
 	private Image itku;
+	private Image testi;
+	private ArrayList<Image> kuvat = new ArrayList<Image>();
+	private Random random;
 	
 	public Mallivastaus(String mallivastaus, String videoLinkki) {
     
@@ -58,9 +65,17 @@ public class Mallivastaus extends Window {
 	    
 	    tiedPolku = VaadinService.getCurrent().getBaseDirectory().getAbsolutePath();
 	    FileResource resource = new FileResource(new File(tiedPolku + "/WEB-INF/images/cry.png"));
+	    FileResource res2 = new FileResource(new File(tiedPolku + "/WEB-INF/images/python.png"));
+	    testi = new Image("", res2);
 	    itku = new Image("", resource);
 	    itku.setHeight("400px");
-	    itku.setHeight("400px");
+	    itku.setWidth("400px");
+	    itku.setStyleName("kuvaStyle");
+	    kuvat.add(itku);
+	    kuvat.add(testi);
+	    
+	    kuvaPanel.setStyleName(Runo.PANEL_LIGHT);
+	    kuvaPanel.setContent(itku);
 	    
 	    HorizontalSplitPanel hsplit = new HorizontalSplitPanel();
 		hsplit.setLocked(true);
@@ -79,8 +94,8 @@ public class Mallivastaus extends Window {
 		oikeaLay.setComponentAlignment(ohjeet, Alignment.MIDDLE_CENTER);
 		oikeaLay.addComponent(ilmoitus);
 		oikeaLay.setComponentAlignment(ilmoitus, Alignment.MIDDLE_CENTER);
-		oikeaLay.addComponent(itku);
-		oikeaLay.setComponentAlignment(itku, Alignment.MIDDLE_CENTER);
+		oikeaLay.addComponent(kuvaPanel);
+		oikeaLay.setComponentAlignment(kuvaPanel, Alignment.MIDDLE_CENTER);
 		
 		hsplit.addComponent(vasenLay);
 		hsplit.addComponent(oikeaLay);
@@ -96,6 +111,12 @@ public class Mallivastaus extends Window {
 	        }
 	    });
 	    
+	    kuvaPanel.addClickListener(new MouseEvents.ClickListener() {
+			@Override
+			public void click(com.vaadin.event.MouseEvents.ClickEvent event) {
+				kuvaPanel.setContent(annaKuva());
+			}
+		});	
 	}
 	
 	/**
@@ -128,5 +149,23 @@ public class Mallivastaus extends Window {
 			ohjeet.setHeight("60%");
 			ohjeet.setContent(ohje);
 		}
+	}
+	
+	/**
+	 * Palauttaa /images/ kansiosta satunnaisen kuvan
+	 * @return Satunnainen kuva kansiosta != sama kuin näkyillä oleva kuva
+	 */
+	public Image annaKuva() {
+		random = new Random();
+		Image uusiKuva = kuvat.get(random.nextInt(kuvat.size()));
+
+		while (kuvaPanel.getContent() == uusiKuva) {
+			uusiKuva = kuvat.get(random.nextInt(kuvat.size()));
+		}
+		
+		uusiKuva.setHeight("400px");
+		uusiKuva.setWidth("400px");
+		uusiKuva.setStyleName("kuvaStyle");
+		return uusiKuva;
 	}
 }

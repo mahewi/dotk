@@ -1,12 +1,18 @@
 package com.example.ohjelmoinninalkeet;
 
+import java.io.File;
+
 import com.example.ohjelmoinninalkeet.AloitusView;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.FileResource;
 import com.vaadin.server.Sizeable;
+import com.vaadin.server.VaadinService;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.HorizontalSplitPanel;
@@ -41,6 +47,8 @@ public class PythonUI extends Panel implements View {
 	private Button metodiTuto = new Button("Tutoriaali: Metodit");
 	private Panel ohjePaneeli = new Panel();
 	private Label ohje = new Label("");
+	private String tiedPolku;
+	private Image py;
 	
     public PythonUI() {
     	initLayout();
@@ -56,7 +64,17 @@ public class PythonUI extends Panel implements View {
     			+ " lukea tutoriaalia ja tehd‰ teht‰v‰‰ samaa aikaa. Avaa vain tutoriaali ennen kuin painat teht‰v‰‰n siirtymispainiketta!<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
     			+ " ª Voit muuttaa tutoriaali-ikkunan kokoa haluamasi kokoiseksi vet‰m‰ll‰ ikunnan oikeassa alalaidassa olevasta s‰‰tˆvivusta.</p>";
     	ohje.setContentMode(ContentMode.HTML);
-
+    	
+    	// Haetaan kuva /WEB-INF/images kansiosta
+	    tiedPolku = VaadinService.getCurrent().getBaseDirectory().getAbsolutePath();
+	    FileResource resource = new FileResource(new File(tiedPolku + "/WEB-INF/images/python.png"));
+	    py = new Image("", resource);
+	    py.setHeight("60px");
+	    py.setHeight("60px");
+	    
+	    otsikko.setStyleName("pyOtsikkoStyle");
+	    py.setStyleName("pyKuvaStyle");
+	    
     	// Painike, josta p‰‰see takaisin aloitusn‰kym‰‰n.
 		takaisin.addClickListener(new Button.ClickListener() {
 		    public void buttonClick(ClickEvent event) {
@@ -132,8 +150,17 @@ public class PythonUI extends Panel implements View {
 		
 		VerticalLayout vasenLay = new VerticalLayout();
 		VerticalLayout oikeaLay = new VerticalLayout();
+		HorizontalLayout hlay = new HorizontalLayout();
+
 		hsplit.addComponent(vasenLay);
 		hsplit.addComponent(oikeaLay);
+		
+		hlay.setSizeFull();
+		hlay.setStyleName("pyHlayStyle");
+		hlay.addComponent(otsikko);
+		hlay.addComponent(py);
+		hlay.setComponentAlignment(otsikko, Alignment.BOTTOM_CENTER);
+		hlay.setComponentAlignment(py, Alignment.MIDDLE_CENTER);
 		
         ohje.setValue(ohjeTeksti);
 		ohjePaneeli.setWidth("80%");
@@ -152,7 +179,7 @@ public class PythonUI extends Panel implements View {
         takaisin.setStyleName(Runo.BUTTON_DEFAULT);
         
         vasenLay.addComponent(takaisin);
-        vasenLay.addComponent(otsikko);
+        vasenLay.addComponent(hlay);
         vasenLay.addComponent(muuttujaTuto);
         vasenLay.addComponent(ehtoTuto);
         vasenLay.addComponent(toistoTuto);
@@ -162,7 +189,6 @@ public class PythonUI extends Panel implements View {
         vasenLay.addComponent(teht3);
         vasenLay.addComponent(teht4);
         oikeaLay.addComponent(ohjePaneeli);
-        
         
         vasenLay.setComponentAlignment(teht1, Alignment.MIDDLE_CENTER);
         vasenLay.setComponentAlignment(teht2, Alignment.MIDDLE_CENTER);

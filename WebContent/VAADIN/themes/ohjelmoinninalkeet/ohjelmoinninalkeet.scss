@@ -21,9 +21,10 @@
  h1.python {
  	font-size:36px; 
  	text-align:center; 
- 	margin-bottom:5%;
+ 	margin-bottom:7%;
+ 	margin-left:40%;
  }
- 
+
  h1.editoriOtsikko {
  	font-size:36px; 
  	text-align:center; 
@@ -194,4 +195,20 @@
  	margin-top:10%;
  }
 
+ .v-horizontallayout-pyHlayStyle .v-slot-pyOtsikkoStyle {
+ 	width:65% !important;
+ }
+ 
+ .v-horizontallayout-pyHlayStyle .v-slot-pyKuvaStyle {
+ 	width:35% !important;
+ }
+ 
+ .v-ui .v-scrollable {
+ 	overflow:visible;
+ }
+ 
+ .kuvaStyle {
+ 	margin-left:25%;
+ }
+ 
 }
