@@ -41,10 +41,11 @@ public class Mallivastaus extends Window {
 	private String ohjeTeksti;
 	private String ilmoitusTeksti;
 	private String tiedPolku;
-	private Image itku;
-	private Image testi;
+	private Image kuva1, kuva2, kuva3;
 	private ArrayList<Image> kuvat = new ArrayList<Image>();
 	private Random random;
+	private FileResource res1, res2, res3;
+	private Button sulje;
 	
 	public Mallivastaus(String mallivastaus, String videoLinkki) {
     
@@ -59,23 +60,26 @@ public class Mallivastaus extends Window {
 		vastaus.setStyleName("malliVastausTextStyle");
 	    vastaus.setValue(mallivastaus);
 		
-	    Button sulje = new Button("Sulje");
+	    sulje = new Button("Sulje");
 	    sulje.setStyleName(Runo.BUTTON_DEFAULT);
 	    sulje.setWidth("25%");
 	    
 	    tiedPolku = VaadinService.getCurrent().getBaseDirectory().getAbsolutePath();
-	    FileResource resource = new FileResource(new File(tiedPolku + "/WEB-INF/images/cry.png"));
-	    FileResource res2 = new FileResource(new File(tiedPolku + "/WEB-INF/images/python.png"));
-	    testi = new Image("", res2);
-	    itku = new Image("", resource);
-	    itku.setHeight("400px");
-	    itku.setWidth("400px");
-	    itku.setStyleName("kuvaStyle");
-	    kuvat.add(itku);
-	    kuvat.add(testi);
+	    res1 = new FileResource(new File(tiedPolku + "/WEB-INF/images/cry.png"));
+	    res2 = new FileResource(new File(tiedPolku + "/WEB-INF/images/python.png"));
+	    res3 = new FileResource(new File(tiedPolku + "/WEB-INF/images/thumbsdown.png"));
+	    kuva1 = new Image("", res1);
+	    kuva2 = new Image("", res2);
+	    kuva3 = new Image("", res3);
+	    kuva1.setHeight("400px");
+	    kuva1.setWidth("400px");
+	    kuva1.setStyleName("kuvaStyle");
+	    kuvat.add(kuva1);
+	    kuvat.add(kuva2);
+	    kuvat.add(kuva3);
 	    
 	    kuvaPanel.setStyleName(Runo.PANEL_LIGHT);
-	    kuvaPanel.setContent(itku);
+	    kuvaPanel.setContent(kuva1);
 	    
 	    HorizontalSplitPanel hsplit = new HorizontalSplitPanel();
 		hsplit.setLocked(true);
@@ -133,7 +137,7 @@ public class Mallivastaus extends Window {
 			ohjeet.setVisible(false);
 		}
 		else {
-			itku.setVisible(false);
+			kuva1.setVisible(false);
 			video.setSource(new ExternalResource(linkki));
 			video.setStyleName("malliVastausVideoStyle");
 	        video.setMimeType("application/x-shockwave-flash");

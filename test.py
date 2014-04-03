@@ -1,1 +1,1 @@
-print 22
+Print 2
