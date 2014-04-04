@@ -48,7 +48,10 @@ public class Editori extends Panel implements View {
 	private String malliVastaus;
 	private String videoLinkki;
 	private String oikeaTuloste;
+	private String avainsanat;
+	private String parametri;
 	private Tietokanta db;
+	private String[] as;
 	
 	public Editori() {
 		initLayout();
@@ -237,9 +240,26 @@ public class Editori extends Panel implements View {
 		ArrayList<String> apu = new ArrayList<String>();
 		apu = db.annaTehtava(tehtavaTyyppi);
 		tehtavanAnto = "Tehtävä: " + apu.get(0);
-		oikeaTuloste = apu.get(1);
-		malliVastaus = apu.get(2);
-		videoLinkki = apu.get(3); 
+		oikeaTuloste = apu.get(1); // Tehtävän oikea tuloste
+		malliVastaus = apu.get(2); // Mallivastaus tekstimuodossa
+		videoLinkki = apu.get(3); // Linkki mallivastausvideoon
+		avainsanat = apu.get(4); // Oikeasta vastauksesta täytyy löytyä
+		parametri = apu.get(5); // Valmis ohjelmakoodi, mikäli tehtävässä on tarve
+		
+		// Tarkistetaan sisältääkö avainsanat-muuttuja 0, 1 vai enemmän sanoja ja asetetaan avainsana(t) tauluun
+		if (avainsanat != null) {
+			if (avainsanat.contains(",")) {
+				as = avainsanat.split(","); // Alustetaan avainsanat taulukkoon
+			}
+			else {
+				as = new String[1];
+				as[0] = avainsanat;
+			}
+		}
+		else {
+			as = new String[0];
+		}
+		
 		tehtAnto.setValue(tehtavanAnto);
 	}
 	
@@ -265,5 +285,26 @@ public class Editori extends Panel implements View {
 			return false;
 		}
 		return true;
+	}
+	
+	/**
+	 * Metodi tarkistaa käyttäjän syöttämän ohjelman taulusta löytyviä parametritietoja vastaan.
+	 * @param ta
+	 * @return totuusarvo löytyykö vastauksesta tarvittavat osat
+	 */
+	public boolean tarkistaAvainsanat(TextArea ta, String[] as) {
+		boolean totuus = true;
+		if (as.length == 0) {
+			return true;
+		}
+		for (int i = 0; i < as.length; i++) {
+			if (ta.getValue().contains(as[i])) {
+				totuus = true;
+			}
+			else {
+				return false;
+			}
+		}
+		return totuus;
 	}
 }
