@@ -47,7 +47,7 @@ public class Mallivastaus extends Window {
 	private FileResource res1, res2, res3;
 	private Button sulje;
 	
-	public Mallivastaus(String mallivastaus, String videoLinkki) {
+	public Mallivastaus(String[] mallivastaus, String videoLinkki) {
     
 		super("Teht‰v‰n mallivastaus");
 	    center();
@@ -56,9 +56,10 @@ public class Mallivastaus extends Window {
 	    setWidth("80%");
 	    
 		vastaus.setWidth(80, TextArea.Unit.PERCENTAGE);
-		vastaus.setRows(30);
+		vastaus.setRows(20);
 		vastaus.setStyleName("malliVastausTextStyle");
-	    vastaus.setValue(mallivastaus);
+		asetaVastaus(mallivastaus);
+	    //vastaus.setValue(mallivastaus);
 		
 	    sulje = new Button("Sulje");
 	    sulje.setStyleName(Runo.BUTTON_DEFAULT);
@@ -115,6 +116,7 @@ public class Mallivastaus extends Window {
 	        }
 	    });
 	    
+	    // Tapahtuman k‰sittely kuvapaneeliin. Paneelin painallus vaihtaa n‰kyviss‰ olevan kuvan.
 	    kuvaPanel.addClickListener(new MouseEvents.ClickListener() {
 			@Override
 			public void click(com.vaadin.event.MouseEvents.ClickEvent event) {
@@ -171,5 +173,22 @@ public class Mallivastaus extends Window {
 		uusiKuva.setWidth("400px");
 		uusiKuva.setStyleName("kuvaStyle");
 		return uusiKuva;
+	}
+	
+	/**
+	 * Asetetaan parametrina saatu merkkijonotaulukko vastaustekstikentt‰‰n.
+	 * @param mv
+	 */
+	public void asetaVastaus(String[] mv) {
+		String apu = "";
+		for (int i = 0; i < mv.length; i++) {
+			if (i == mv.length - 1) {
+				apu += mv[i];
+			}
+			else {
+				apu += mv[i] + "\n";
+			}
+		}
+		vastaus.setValue(apu);
 	}
 }

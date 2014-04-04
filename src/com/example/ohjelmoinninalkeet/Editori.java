@@ -52,6 +52,9 @@ public class Editori extends Panel implements View {
 	private String parametri;
 	private Tietokanta db;
 	private String[] as;
+	private String[] tulosteRivit;
+	private String[] malliv;
+	private String[] parametrit;
 	
 	public Editori() {
 		initLayout();
@@ -61,9 +64,9 @@ public class Editori extends Panel implements View {
 	public void initLayout() {
 		vlay.setSizeFull();
 		tekstikentta.setWidth(80, TextArea.Unit.PERCENTAGE);
-		tekstikentta.setRows(30);
+		tekstikentta.setRows(20);
 		tulosteAlue.setWidth(80, TextArea.Unit.PERCENTAGE);
-		tulosteAlue.setRows(30);
+		tulosteAlue.setRows(20);
 		tulosteAlue.setStyleName("tulosteStyle");
 		tulosteAlue.setEnabled(false);
 		arvioi.setEnabled(false);
@@ -168,7 +171,7 @@ public class Editori extends Panel implements View {
 		// Testivideolinkki: https://www.youtube.com/v/mjQyXmlo46U&feature=youtu.be
 		naytaVastaus.addClickListener(new Button.ClickListener() {
 		    public void buttonClick(ClickEvent event) {
-		    	Mallivastaus mv = new Mallivastaus(malliVastaus, videoLinkki);
+		    	Mallivastaus mv = new Mallivastaus(malliv, videoLinkki);
 		    	UI.getCurrent().addWindow(mv);
 		    	naytaVastaus.setEnabled(false);
 		    }
@@ -246,19 +249,10 @@ public class Editori extends Panel implements View {
 		avainsanat = apu.get(4); // Oikeasta vastauksesta täytyy löytyä
 		parametri = apu.get(5); // Valmis ohjelmakoodi, mikäli tehtävässä on tarve
 		
-		// Tarkistetaan sisältääkö avainsanat-muuttuja 0, 1 vai enemmän sanoja ja asetetaan avainsana(t) tauluun
-		if (avainsanat != null) {
-			if (avainsanat.contains(",")) {
-				as = avainsanat.split(","); // Alustetaan avainsanat taulukkoon
-			}
-			else {
-				as = new String[1];
-				as[0] = avainsanat;
-			}
-		}
-		else {
-			as = new String[0];
-		}
+		alustaTuloste();
+		alustaAvainsanat();
+		alustaMallivastaus();
+		alustaParametrit();
 		
 		tehtAnto.setValue(tehtavanAnto);
 	}
@@ -268,10 +262,34 @@ public class Editori extends Panel implements View {
 	 * @return totuusarvo vastaako tekstikentän syöte tietokannan kenttää.
 	 */
 	public boolean arvioiVastaus() {
+		String apu = "";
 		boolean totuus = false;
-		if (tulosteAlue.getValue().equals(oikeaTuloste)) {
+		for (int i = 0; i < tulosteRivit.length; i++) {
+			if (i == tulosteRivit.length - 1) {
+				apu += tulosteRivit[i];
+			}
+			else {
+				apu += tulosteRivit[i] + "\n";
+			}
+
+		}
+		
+		// Tarkistetaan, että tuloste vastaa kannasta haettua tulostetta.
+		if (tulosteAlue.getValue().equals(apu)) {
 			totuus = true;
 		}
+		else {
+			return false;		
+		}
+		
+		// Tarkistetaan, että käyttäjän syöttämästä ohjelmasta löytyy tarvittavat avainsanat
+		if (tarkistaAvainsanat(tekstikentta, as)) {
+			totuus = true;
+		}
+		else {
+			return false;
+		}
+		
 		return totuus;
 	}
 	
@@ -285,6 +303,53 @@ public class Editori extends Panel implements View {
 			return false;
 		}
 		return true;
+	}
+	
+	/**
+	 * Metodi alustaa tietokannasta haetun tehtävän tulosteen tauluun
+	 */
+	public void alustaTuloste() {
+		// Alustetaan ohjelma tuloste tauluun.
+		if (oikeaTuloste.contains("/n")) {
+			tulosteRivit = oikeaTuloste.split("/n");
+		}
+		else {
+			tulosteRivit = new String[1];
+			tulosteRivit[0] = oikeaTuloste;
+		}
+	}
+	
+	/**
+	 * Metodi alustaa tietokannasta haetun tehtävän avainsanat tauluun
+	 */
+	public void alustaAvainsanat() {
+		// Tarkistetaan sisältääkö avainsanat-muuttuja 0, 1 vai enemmän sanoja ja asetetaan avainsana(t) tauluun
+		if (avainsanat != null) {
+			if (avainsanat.contains(",")) {
+				as = avainsanat.split(","); // Alustetaan avainsanat taulukkoon
+			}
+			else {
+				as = new String[1];
+				as[0] = avainsanat;
+			}
+		}
+		else {
+			as = new String[0];
+		}
+	}
+	
+	/**
+	 * Alustetaan tietokannasta haetun tehtävän mallivastauksen tauluun
+	 */
+	public void alustaMallivastaus() {
+		// Alustetaan ohjelma tuloste tauluun.
+		if (malliVastaus.contains("/n")) {
+			malliv = malliVastaus.split("/n");
+		}
+		else {
+			malliv = new String[1];
+			malliv[0] = malliVastaus;
+		}
 	}
 	
 	/**
@@ -308,4 +373,43 @@ public class Editori extends Panel implements View {
 		}
 		return totuus;
 	}
+	
+	/**
+	 * Metodi alustaa tietokannasta haetun tehtävän mahdolliset parametrit tauluun
+	 */
+	public void alustaParametrit() {
+		if (parametri != null) {
+			if (parametri.contains("/n")) {
+				parametrit = parametri.split("/n"); // Alustetaan parametrit taulukkoon
+			}
+			else {
+				parametrit = new String[1];
+				parametrit[0] = parametri;
+			}
+		}
+		else {
+			parametrit = new String[0];
+		}
+		asetaParametrit(parametrit);
+	}
+	
+	/**
+	 * Asetetaan mahdolliset parametrit tekstikenttään.
+	 * @param p
+	 */
+	public void asetaParametrit(String[] p) {
+		String apu = "";
+		if (p.length != 0) {
+			for (int i = 0; i < p.length; i++) {
+				if (i == p.length - 1) {
+					apu += p[i];
+				}
+				else {
+					apu += p[i] + "\n";
+				}
+			}
+			tekstikentta.setValue(apu);
+		}
+	}
+	
 }
