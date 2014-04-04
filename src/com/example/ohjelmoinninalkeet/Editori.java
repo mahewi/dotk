@@ -293,7 +293,7 @@ public class Editori extends Panel implements View {
 	 * @return totuusarvo löytyykö vastauksesta tarvittavat osat
 	 */
 	public boolean tarkistaAvainsanat(TextArea ta, String[] as) {
-		boolean totuus = true;
+		boolean totuus = false;
 		if (as.length == 0) {
 			return true;
 		}
@@ -304,6 +304,7 @@ public class Editori extends Panel implements View {
 			else {
 				return false;
 			}
+			totuus = true;
 		}
 		return totuus;
 	}
