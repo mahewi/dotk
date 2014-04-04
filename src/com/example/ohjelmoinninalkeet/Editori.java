@@ -144,9 +144,11 @@ public class Editori extends Panel implements View {
 			}
 		});
 		
-    	// Nappi, josta pääsee takaisin Python-näkymään.
+    	// Nappi, josta pääsee takaisin Python-näkymään. 
 		takaisin.addClickListener(new Button.ClickListener() {
 		    public void buttonClick(ClickEvent event) {
+		    	tulosteAlue.setValue("");
+		    	tekstikentta.setValue("");
 		    	getUI().getNavigator().navigateTo(PythonUI.NAME);
 		    }
 		});
@@ -232,7 +234,6 @@ public class Editori extends Panel implements View {
 	 */
 	public void initDB() {
 		db = new Tietokanta();
-		tehtavaTyyppi = "muuttujat"; // TÄMÄ ON TESTIARVO! POISTA KUN TAULUT OVAT VALMIIT!
 		ArrayList<String> apu = new ArrayList<String>();
 		apu = db.annaTehtava(tehtavaTyyppi);
 		tehtavanAnto = "Tehtävä: " + apu.get(0);
