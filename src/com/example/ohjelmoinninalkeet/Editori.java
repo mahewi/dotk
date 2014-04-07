@@ -128,7 +128,8 @@ public class Editori extends Panel implements View {
 					Notification.show("VIRHE!", "Et voi suorittaa ohjelmaa, jota ei ole olemassa!", Notification.Type.ERROR_MESSAGE);
 				}
 				else {
-					Notification.show("VIRHE!", "Ohjelmasi ei mennyt k‰‰nt‰j‰st‰ l‰pi!", Notification.Type.ERROR_MESSAGE);
+					Notification.show("VIRHE!", "Ohjelmasi ei mennyt k‰‰nt‰j‰st‰ l‰pi!" + "\n\n" + "K‰‰nt‰j‰n antama virheilmoitus:" + "\n\n"
+				    + getErrorCode(tekstikentta.getValue()), Notification.Type.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -194,6 +195,43 @@ public class Editori extends Panel implements View {
 			Runtime r = Runtime.getRuntime();
             Process p = r.exec("python test.py");
             BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            p.waitFor();
+            String paluu = "";
+            
+            br.mark(300);
+            int count = 0;
+            while (br.readLine() != null) {
+            	if (count == 0) {
+            	}
+            	count++;
+            }
+            
+ 			br.reset();
+            
+ 			for (int i = 0; i < count; i++) {
+ 				if (i == count - 1) {
+ 					paluu = paluu + br.readLine();
+ 				}
+ 				else {
+ 					paluu = paluu + br.readLine() + "\n";
+ 				}
+ 			}
+
+            return paluu;
+            
+		}
+		catch(Exception e){return e.toString();}
+	}
+	
+	public String getErrorCode(String code) {
+		try {
+			BufferedWriter out = new BufferedWriter(new FileWriter("test.py"));
+			out.write(code);
+			out.close();
+
+			Runtime r = Runtime.getRuntime();
+            Process p = r.exec("python test.py");
+            BufferedReader br = new BufferedReader(new InputStreamReader(p.getErrorStream()));
             p.waitFor();
             String paluu = "";
             
