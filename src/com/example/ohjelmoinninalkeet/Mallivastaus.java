@@ -38,6 +38,7 @@ public class Mallivastaus extends Window {
 	private Panel kuvaPanel = new Panel();
 	private Label ohje = new Label();
 	private Label ilmoitus = new Label();
+	private Label tehtAnto = new Label();
 	private String ohjeTeksti;
 	private String ilmoitusTeksti;
 	private String tiedPolku;
@@ -47,7 +48,7 @@ public class Mallivastaus extends Window {
 	private FileResource res1, res2, res3;
 	private Button sulje;
 	
-	public Mallivastaus(String[] mallivastaus, String videoLinkki) {
+	public Mallivastaus(String[] mallivastaus, String tehtava, String videoLinkki) {
     
 		super("Tehtävän mallivastaus");
 	    center();
@@ -55,11 +56,13 @@ public class Mallivastaus extends Window {
 	    setHeight("80%");
 	    setWidth("80%");
 	    
+	    tehtAnto.setStyleName("tehtAntoMalliStyle");
+	    tehtAnto.setValue(tehtava);
+	    
 		vastaus.setWidth(80, TextArea.Unit.PERCENTAGE);
 		vastaus.setRows(20);
 		vastaus.setStyleName("malliVastausTextStyle");
 		asetaVastaus(mallivastaus);
-	    //vastaus.setValue(mallivastaus);
 		
 	    sulje = new Button("Sulje");
 	    sulje.setStyleName(Runo.BUTTON_DEFAULT);
@@ -90,7 +93,9 @@ public class Mallivastaus extends Window {
 		
 		VerticalLayout vasenLay = new VerticalLayout();
 		final VerticalLayout oikeaLay = new VerticalLayout();
-
+		
+		vasenLay.addComponent(tehtAnto);
+		vasenLay.setComponentAlignment(tehtAnto, Alignment.MIDDLE_CENTER);
 		vasenLay.addComponent(vastaus);
 		vasenLay.setComponentAlignment(vastaus, Alignment.MIDDLE_CENTER);
 		oikeaLay.addComponent(video);
