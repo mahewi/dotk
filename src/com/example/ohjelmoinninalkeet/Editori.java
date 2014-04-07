@@ -172,7 +172,7 @@ public class Editori extends Panel implements View {
 		// Testivideolinkki: https://www.youtube.com/v/mjQyXmlo46U&feature=youtu.be
 		naytaVastaus.addClickListener(new Button.ClickListener() {
 		    public void buttonClick(ClickEvent event) {
-		    	Mallivastaus mv = new Mallivastaus(malliv, videoLinkki);
+		    	Mallivastaus mv = new Mallivastaus(malliv, tehtavanAnto, videoLinkki);
 		    	UI.getCurrent().addWindow(mv);
 		    	naytaVastaus.setEnabled(false);
 		    }
