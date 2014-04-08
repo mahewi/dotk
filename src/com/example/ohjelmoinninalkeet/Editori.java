@@ -12,13 +12,13 @@ import com.vaadin.ui.TextArea;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Notification;
-import com.vaadin.ui.Panel;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.themes.Runo;
 
 import java.io.*;
 import java.util.ArrayList;
 
+@SuppressWarnings("serial")
 /**
  * Editori-luokka muodostaa n‰kym‰n, jossa k‰ytt‰j‰ p‰‰see vastaamaan Python aiheisiin teht‰v‰‰n.
  * N‰kym‰ss‰ on toiminnot vastauksen suorittamiseen Python-k‰‰nt‰j‰n l‰pi sek‰ arvioiminen vertaamalla
@@ -44,17 +44,9 @@ public class Editori extends Panel implements View {
 	private Label tehtAnto = new Label("");
 	private Label tulosteOtsikko = new Label("<p class='teht'>Ohjelman tulostus (Python-k‰‰nt‰j‰n l‰pi ajettuna)</p>");
 	private String tehtavaTyyppi = "";
-	private String tehtavanAnto;
-	private String malliVastaus;
-	private String videoLinkki;
-	private String oikeaTuloste;
-	private String avainsanat;
-	private String parametri;
+	private String tehtavanAnto, malliVastaus, videoLinkki, oikeaTuloste, avainsanat, parametri;
 	private Tietokanta db;
-	private String[] as;
-	private String[] tulosteRivit;
-	private String[] malliv;
-	private String[] parametrit;
+	private String[] as, tulosteRivit, malliv, parametrit;
 	
 	public Editori() {
 		initLayout();
@@ -63,37 +55,39 @@ public class Editori extends Panel implements View {
 	// Asetetaan komponentit n‰kym‰‰n ja rekisterˆid‰‰n toiminnallisuuksia.
 	public void initLayout() {
 		vlay.setSizeFull();
+		
+		otsikko.setContentMode(ContentMode.HTML);		
+		ohje.setStyleName("ohjeStyle");
+		takaisin.setWidth("20em");
+		takaisin.setStyleName(Runo.BUTTON_DEFAULT);
 		tekstikentta.setWidth(80, TextArea.Unit.PERCENTAGE);
 		tekstikentta.setRows(16);
+		tehtAnto.setStyleName("tehtAntoStyle");
+		tehtAnto.setContentMode(ContentMode.HTML);
 		tulosteAlue.setWidth(80, TextArea.Unit.PERCENTAGE);
 		tulosteAlue.setRows(16);
 		tulosteAlue.setStyleName("tulosteStyle");
 		tulosteAlue.setEnabled(false);
-		arvioi.setEnabled(false);
-		naytaVastaus.setEnabled(false);
-		otsikko.setContentMode(ContentMode.HTML);
-		suorita.setStyleName("suoritaStyle");
-		arvioi.setStyleName("arvioiStyle");
-		naytaVastaus.setStyleName("naytaVastausStyle");
-		takaisin.setStyleName(Runo.BUTTON_DEFAULT);
-		ohje.setStyleName("ohjeStyle");
-		tehtAnto.setStyleName("tehtAntoStyle");
-		tehtAnto.setContentMode(ContentMode.HTML);
 		tulosteOtsikko.setStyleName("tulosteOtsikkoStyle");
 		tulosteOtsikko.setContentMode(ContentMode.HTML);
-		takaisin.setWidth("250px");
-		ohje.setWidth("100px");
+		arvioi.setEnabled(false);
+		arvioi.setStyleName("arvioiStyle");
+		suorita.setStyleName("suoritaStyle");
+		naytaVastaus.setEnabled(false);
+		naytaVastaus.setStyleName("naytaVastausStyle");
 		
 		// M‰‰ritet‰‰n VerticalLayoutin sis‰‰n tulevat Layoutit
 		HorizontalLayout ylaHlay = new HorizontalLayout();
 		HorizontalLayout alempiYlaHlay = new HorizontalLayout();
 		HorizontalLayout ylaOtsikkoHlay = new HorizontalLayout();
-		ylaOtsikkoHlay.setWidth("100%");
 		HorizontalLayout ylaKeskiHlay = new HorizontalLayout();
-		ylaKeskiHlay.setWidth("100%");
 		HorizontalLayout keskiHlay = new HorizontalLayout();
-		keskiHlay.setWidth("100%");
 		HorizontalLayout alaHlay = new HorizontalLayout();
+		
+		// M‰‰ritet‰‰n layouttien leveydet
+		ylaOtsikkoHlay.setWidth("100%");
+		ylaKeskiHlay.setWidth("100%");
+		keskiHlay.setWidth("100%");
 		alaHlay.setWidth("40%");
 		
 		// Asetetaan komponentit m‰‰riteltyihin layoutteihin
@@ -108,6 +102,7 @@ public class Editori extends Panel implements View {
 		alaHlay.addComponent(arvioi);
 		alaHlay.addComponent(naytaVastaus);
 		
+		// Komponenttien asettelu layoutissa
 		keskiHlay.setComponentAlignment(tekstikentta, Alignment.MIDDLE_CENTER);
 		keskiHlay.setComponentAlignment(tulosteAlue, Alignment.MIDDLE_CENTER);
 		
@@ -225,6 +220,11 @@ public class Editori extends Panel implements View {
 		catch(Exception e){return e.toString();}
 	}
 	
+	/**
+	 * Metodi vie k‰ytt‰j‰n syˆtt‰m‰n ohjelman/syˆtteen Python-k‰‰nt‰j‰n l‰pi
+	 * @param code
+	 * @return K‰‰nt‰j‰n antama virhekoodi
+	 */
 	public String getErrorCode(String code) {
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter("test.py"));
@@ -451,5 +451,4 @@ public class Editori extends Panel implements View {
 			tekstikentta.setValue(apu);
 		}
 	}
-	
 }

@@ -4,13 +4,13 @@ import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.themes.Runo;
 
+@SuppressWarnings("serial")
 /**
  * Luokka m‰‰rittelee ponnahdusikkunan, joka aukeaa k‰ytt‰j‰n painaessa "OHJE"-painiketta.
  * Ikkuna sis‰lt‰‰ Editori-n‰kym‰n ohjeet, jotka kertovat kuinka vastaus tulee kirjoittaa ja miten se arvioidaan. 

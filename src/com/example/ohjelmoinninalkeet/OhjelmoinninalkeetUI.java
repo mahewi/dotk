@@ -5,7 +5,6 @@ import javax.servlet.annotation.WebServlet;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;
-import com.vaadin.server.Page;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
@@ -34,9 +33,9 @@ public class OhjelmoinninalkeetUI extends UI {
         Navigator navigator = new Navigator(this, this);
         
         // Näkymien rekisteröinti
-        navigator.addView(AloitusView.NAME, new AloitusView());
-        navigator.addView(PythonUI.NAME, new PythonUI());
-        navigator.addView(Editori.NAME, new Editori());
+        navigator.addView(AloitusView.NAME, new AloitusView()); // Oletusnäkymä, NAME=""
+        navigator.addView(PythonUI.NAME, new PythonUI()); // NAME="pyhtonView"
+        navigator.addView(Editori.NAME, new Editori()); // NAME="editoriView"
 
     }
 }

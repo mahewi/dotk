@@ -1,6 +1,5 @@
 package com.example.ohjelmoinninalkeet;
 
-import com.vaadin.server.VaadinRequest;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -8,10 +7,10 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.themes.Runo;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
+@SuppressWarnings("serial")
 /**
  * Luokka m‰‰ritt‰‰ ponnahdusikkunan, joka aukeaa k‰ytt‰j‰n painaessa "Arvioi"-paniketta.
  * N‰kym‰ sis‰lt‰‰ tiedon vastauksen oikeellisuudesta.

@@ -6,7 +6,6 @@ import com.example.ohjelmoinninalkeet.AloitusView;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.FileResource;
-import com.vaadin.server.Sizeable;
 import com.vaadin.server.VaadinService;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
@@ -14,7 +13,6 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.HorizontalSplitPanel;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Button.ClickEvent;
@@ -22,8 +20,8 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.Reindeer;
 import com.vaadin.ui.themes.Runo;
-import com.vaadin.navigator.Navigator;
 
+@SuppressWarnings("serial")
 /**
  * PythonUI-n‰kym‰ m‰‰rittelee Python-ohjelmointikielen "kotisivun" ohjelmassa. N‰kym‰ sis‰lt‰‰
  * Mahdollisuuden valita eri teht‰v‰tyyppej‰.
@@ -35,8 +33,9 @@ public class PythonUI extends Panel implements View {
 	// Muuttuja jota Navigator-olio k‰ytt‰‰ n‰kym‰n identifioimiseen
 	public static final String NAME = "pythonView";
 	
-	private Button takaisin = new Button("Takaisin");
 	private Label otsikko = new Label("<h1 class='python'>Python</h1>");
+	private Label ohje = new Label("");
+	private Button takaisin = new Button("Takaisin");
 	private Button teht1 = new Button("Teht‰v‰: Muuttujat");
 	private Button teht2 = new Button("Teht‰v‰: Ehtolauseet");
 	private Button teht3 = new Button("Teht‰v‰: Toistorakenteet");
@@ -46,7 +45,6 @@ public class PythonUI extends Panel implements View {
 	private Button toistoTuto = new Button("Tutoriaali: Toistorakenteet");
 	private Button metodiTuto = new Button("Tutoriaali: Metodit");
 	private Panel ohjePaneeli = new Panel();
-	private Label ohje = new Label("");
 	private String tiedPolku;
 	private Image py;
 	
@@ -69,8 +67,8 @@ public class PythonUI extends Panel implements View {
 	    tiedPolku = VaadinService.getCurrent().getBaseDirectory().getAbsolutePath();
 	    FileResource resource = new FileResource(new File(tiedPolku + "/WEB-INF/images/python.png"));
 	    py = new Image("", resource);
-	    py.setHeight("60px");
-	    py.setHeight("60px");
+	    py.setHeight("60%");
+	    py.setWidth("60%");
 	    
 	    otsikko.setStyleName("pyOtsikkoStyle");
 	    py.setStyleName("pyKuvaStyle");
@@ -144,7 +142,7 @@ public class PythonUI extends Panel implements View {
 		
 		HorizontalSplitPanel hsplit = new HorizontalSplitPanel();
 		hsplit.setLocked(true);
-		hsplit.setSplitPosition(15, HorizontalSplitPanel.Unit.PERCENTAGE);
+		hsplit.setSplitPosition(20, HorizontalSplitPanel.Unit.PERCENTAGE);
 		hsplit.setStyleName(Reindeer.SPLITPANEL_SMALL);
 		setContent(hsplit);
 		
@@ -178,6 +176,7 @@ public class PythonUI extends Panel implements View {
         metodiTuto.setStyleName("tutoriaaliStyle");
         takaisin.setStyleName(Runo.BUTTON_DEFAULT);
         
+        // Lis‰t‰‰n komponentit layoutteihin
         vasenLay.addComponent(takaisin);
         vasenLay.addComponent(hlay);
         vasenLay.addComponent(muuttujaTuto);
@@ -190,6 +189,7 @@ public class PythonUI extends Panel implements View {
         vasenLay.addComponent(teht4);
         oikeaLay.addComponent(ohjePaneeli);
         
+        // M‰‰ritet‰‰n komponenttien sijainnit layouteissa
         vasenLay.setComponentAlignment(teht1, Alignment.MIDDLE_CENTER);
         vasenLay.setComponentAlignment(teht2, Alignment.MIDDLE_CENTER);
         vasenLay.setComponentAlignment(teht3, Alignment.MIDDLE_CENTER);

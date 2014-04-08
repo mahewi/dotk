@@ -11,6 +11,7 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.themes.Runo;
 
+@SuppressWarnings("serial")
 /**
  * Luokka m‰‰rittelee ponnahdusikkunan, joka aukeaa k‰ytt‰j‰n painaessa "Tutoriaali: Ehtolauseet"-painiketta.
  * Ikkuna sis‰lt‰‰ ehtolauseita (Pythonissa) koskevan ohjeistuksen

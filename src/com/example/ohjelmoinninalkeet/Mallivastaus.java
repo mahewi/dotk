@@ -24,6 +24,7 @@ import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.themes.Reindeer;
 import com.vaadin.ui.themes.Runo;
 
+@SuppressWarnings("serial")
 /**
  * Luokka määrittelee ponnahdusikkunan, joka aukeaa käyttäjän painaessa "Mallivastaus"-painiketta.
  * Ikkuna sisältää tehtävän mallivastauksen niin kirjoitetussa muodossa kuin videoesityksenä. 
@@ -32,7 +33,7 @@ import com.vaadin.ui.themes.Runo;
  */
 public class Mallivastaus extends Window {
 	
-	Embedded video = new Embedded(null);
+	private Embedded video = new Embedded(null);
 	private TextArea vastaus = new TextArea();
 	private Panel ohjeet = new Panel();
 	private Panel kuvaPanel = new Panel();
@@ -48,6 +49,12 @@ public class Mallivastaus extends Window {
 	private FileResource res1, res2, res3;
 	private Button sulje;
 	
+	/**
+	 * Mallivastausikkunan konstruktori
+	 * @param mallivastaus -> vastauksen rivit eri indekseissä 0-->
+	 * @param tehtava -> tehtävänanto
+	 * @param videoLinkki -> youtube-linkki mallivastausvideoon
+	 */
 	public Mallivastaus(String[] mallivastaus, String tehtava, String videoLinkki) {
     
 		super("Tehtävän mallivastaus");
@@ -69,6 +76,7 @@ public class Mallivastaus extends Window {
 	    sulje.setStyleName(Runo.BUTTON_DEFAULT);
 	    sulje.setWidth("25%");
 	    
+	    // Haetaan kuvia /WEB-INF/images -kansiosta ja asetetaan ne ArrayListiin 
 	    tiedPolku = VaadinService.getCurrent().getBaseDirectory().getAbsolutePath();
 	    res1 = new FileResource(new File(tiedPolku + "/WEB-INF/images/cry.png"));
 	    res2 = new FileResource(new File(tiedPolku + "/WEB-INF/images/python.png"));

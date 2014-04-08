@@ -1,7 +1,5 @@
 package com.example.ohjelmoinninalkeet;
 
-import com.vaadin.annotations.Theme;
-import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.shared.ui.label.ContentMode;
@@ -30,7 +28,7 @@ public class AloitusView extends Panel implements View {
 	private Label otsikko = new Label("<h1 class='etuSivuOtsikko'>Ohjelmoinnin alkeet</h1>");
 	private Label esittely = new Label("");
 	private Label kielet = new Label("<h2>Valitse ohjelmointikieli</h2>");
-	private Label tekijat = new Label("&copy Marco Willgren & Tatu Seppä-Lassila, 2014");
+	private Label tekijat = new Label("<p class='tekijat'>&copy Marco Willgren & Tatu Seppä-Lassila, 2014</p>");
 	private Button python = new Button("Python");
 	private Panel esittelyPaneeli = new Panel();
 
@@ -46,6 +44,7 @@ public class AloitusView extends Panel implements View {
 		esittely.setContentMode(ContentMode.HTML);
 		kielet.setContentMode(ContentMode.HTML);
 		tekijat.setContentMode(ContentMode.HTML);
+		tekijat.setStyleName("tekijaStyle");
 		String teksti = "<p><b class='esittelyotsikko'>Mikä on ohjelmoinnin alkeet -sovellus?</b> <br></br> Ohjelmoinnin alkeet -sovelluksessa on ohjelmoimisen perusteisiin liittyviä tehtäviä ja ohjeita. "
 				+ "Tehtävät ovat suunnattu aloitteleville ohjelmoijille, eivätkä täten vaadi aiempaa ohjelmointiosaamista. Tehtävien yhteydessä on mahdollisuus selata aihealuetta koskevia oppaita/videoita ja onkin suotavaa "
 				+ "tehdä näin, mikäli oppimiskokemuksesta haluaa ottaa kaiken irti. <br></br>"
@@ -59,9 +58,7 @@ public class AloitusView extends Panel implements View {
 		esittelyPaneeli.setWidth("80%");
 		esittelyPaneeli.setHeight("60%");
 		esittelyPaneeli.setContent(esittely);
-		tekijat.setStyleName("tekijaStyle");
 		python.setStyleName("pythonStyle");
-		tekijat.setSizeUndefined();
 		
 		HorizontalSplitPanel split = new HorizontalSplitPanel();
 		setContent(split);

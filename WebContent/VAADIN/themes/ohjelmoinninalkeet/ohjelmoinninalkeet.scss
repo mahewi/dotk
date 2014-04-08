@@ -12,235 +12,249 @@
 
   /* Insert your theme rules here */
   
- h1.etuSivuOtsikko {
- 	/*font-size:36px;*/
- 	font-size:250%; 
- 	text-align:center; 
- 	margin-top:7%;
- }
- 
- h1.python {
- 	/*font-size:36px;*/
- 	font-size:250%; 
- 	text-align:center; 
- 	margin-bottom:7%;
- 	margin-left:40%;
- }
+	 h1.etuSivuOtsikko {
+	 	/*font-size:36px;*/
+	 	font-size:250%; 
+	 	text-align:center; 
+	 	margin-top:7%;
+	 }
+	 
+	 h1.python {
+	 	/*font-size:36px;*/
+	 	font-size:250%; 
+	 	text-align:center; 
+	 	margin-bottom:7%;
+	 	margin-left:40%;
+	 }
+	
+	 h1.editoriOtsikko {
+	 	/*font-size:36px;*/
+	 	font-size:250%; 
+	 	text-align:center; 
+	 	margin-bottom:2%;
+	 }
+	 
+	 h2 {
+	 	/*font-size:26px !important;*/
+	 	font-size:200% !important; 
+	 	text-align:center; 
+	 	margin-top:10%;
+	 }
+	 
+	 h2.ilmoitus {
+	 	margin-top:15%;
+	 }
+	 
+	 b.esittelyotsikko {
+	 	/*font-size:26px;*/
+	 	font-size:200%; 
+	 	color:#f14c1a;
+	 }
+	 
+	 p {
+	 	/**font-size:17px;
+	 	margin-left:20px; 
+	 	margin-top:20px; 
+	 	margin-right:20px;*/
+	 	font-size:120%; 
+	 	margin-left:2%;
+	 	margin-right:2%;
+	 	margin-top:2%;
+	 	text-align:rigth; 
+	 	line-height:1.5;
+	 }
+	 
+	 .v-button-caption {
+	 	/*font-size:16px;*/
+	 	font-size:130%;
+	 }
+	 
+	 .v-button {
+	 	margin-left:2%; 
+	 	margin-top:5%; 
+	 	margin-bottom:5%; 
+	 	width:90%; 
+	 	border-style:none;
+	 }
+	 
+	 .v-panel {
+	 	margin-top:3%;
+	 }
+	 
+	 .v-splitpanel-horizontal {
+	 	background:#f5f5f5;
+	 }
+	 
+	 .v-vertical {
+	 	background:#f5f5f5;
+	 }
+	 
+	 .tulosteStyle {
+	 	margin-top:2%;
+	 }
+	 
+	 .tekijaStyle {
+	 	/*font-size:14px;*/
+	 	/*font-size:120%;*/ 
+	 	margin-top:40%;
+	 	text-align:center;
+	 }
+	 
+	 .tekijat {
+	 	font-style:italic;
+	 	font-size:100%;
+	 }
+	 
+	 .tehtavaStyle .v-button-caption {
+	 	color:black;
+	 	font-size:130%; 
+	 	/*font-size:16px;*/
+	 }
+	 
+	 .tehtavaStyle {
+	 	margin-bottom:0%;
+	 }
+	 
+	 .tutoriaaliStyle {
+	 	margin-bottom:20%;
+	 }
+	 
+	 .tutoriaaliStyle .v-button-caption {
+	 	color:black; 
+	 	font-size:130%;
+	 	/*font-size:16px;*/
+	 }
+	 
+	 .tehtavanAnto {
+	 	/*font-size:30px;*/
+	 	font-size:140%; 
+	 	text-align:center;
+	 }
+	 
+	 .takaisinStyle {
+	 	margin-top:2%; 
+	 	margin-left:2%; 
+	 	margin-bottom:0%; 
+	 	width:10%;
+	 }
+	 
+	 .arvioiStyle {
+	 	margin-top:5%; 
+	 	margin-bottom:2%; 
+	 	width:50%; 
+	 	margin-right:0%;
+	 }
+	 
+	 .arvioiStyle .v-button-caption {
+	 	color:black;
+	 }
+	 
+	 .suoritaStyle {
+	 	margin-top:5%; 
+	 	margin-left:35%; 
+	 	margin-right:0%; 
+	 	margin-bottom:2%; 
+	 	width:50%;
+	 }
+	 
+	 .suoritaStyle .v-button-caption {
+	 	color:black;
+	 }
+	 
+	 .naytaVastausStyle {
+	 	width:50%; 
+	 	margin-left:90%;
+	 }
+	 
+	 .pythonStyle {
+	 	width:40% !important; 
+	 	margin-top:5%;
+	 }		
+	 
+	 .pythonStyle .v-button-caption {
+	 	color:black; 
+	 	/*font-size:18px;*/
+	 	font-size:140%;
+	 }
+	 
+	 .tehtAntoStyle {
+	 	margin-left:10%; 
+	 	color:#f14c1a;
+	 	width:80% !important;
+	 }
+	 
+	 .tulosteOtsikkoStyle {
+	 	margin-left:10%; 
+	 	/*font-size:18px;*/ 
+	 	color:#f14c1a;
+	 }
+	 
+	 p.teht {
+	  	font-size:150%;
+	 }
+	 
+	 .tehtAntoMalliStyle {
+	 	margin-left:10%;
+	 	/*font-size:18px;*/
+	 	color:#f14c1a;
+	 	width:80% !important;
+	 	margin-top:10%;
+	 }
+	 
+	 .suljeStyle {
+	 	width:50%; 
+	 	margin-bottom:0%;
+	 }
+	 
+	 .suljeStyle .v-button-caption {
+	 	color:black;
+	 }
+	 
+	 .palauteStyle {
+	  	text-align:center;
+	 }
+	 
+	 .ohjeStyle {
+	 	width:120% !important;
+	 }
+	 
+	 .ohjeStyle .v-button-caption {
+	 	font-family:Calibri; 
+	 	font-weight:bolder;
+	 }
+	 
+	 .malliVastausTextStyle {
+	 	margin-top:2%;
+	 }
+	 
+	 .malliVastausVideoStyle {
+	 	margin-top:10%;
+	 }
+	
+	 .v-horizontallayout-pyHlayStyle .v-slot-pyOtsikkoStyle {
+	 	width:65% !important;
+	 }
+	 
+	 .v-horizontallayout-pyHlayStyle .v-slot-pyKuvaStyle {
+	 	width:35% !important;
+	 }
+	 
+	 .v-ui .v-scrollable {
+	 	overflow:visible;
+	 }
+	 
+	 .kuvaStyle {
+	 	margin-left:25%;
+	 }
+	 
+	 .pyKuvaStyle {
+	 	margin:0 auto;
+	 }
+	 
+	 textarea.v-textarea {
+	 	font-size:20px;
+	 	line-height:1.2;
+	 	padding:1%; 
+	}
 
- h1.editoriOtsikko {
- 	/*font-size:36px;*/
- 	font-size:250%; 
- 	text-align:center; 
- 	margin-bottom:2%;
- }
- 
- h2 {
- 	/*font-size:26px !important;*/
- 	font-size:200% !important; 
- 	text-align:center; 
- 	margin-top:10%;
- }
- 
- h2.ilmoitus {
- 	margin-top:15%;
- }
- 
- b.esittelyotsikko {
- 	/*font-size:26px;*/
- 	font-size:200%; 
- 	color:#f14c1a;
- }
- 
- p {
- 	/**font-size:17px;
- 	margin-left:20px; 
- 	margin-top:20px; 
- 	margin-right:20px;*/
- 	font-size:120%; 
- 	margin-left:2%;
- 	margin-right:2%;
- 	margin-top:2%;
- 	text-align:rigth; 
- 	line-height:1.5;
- }
- 
- .v-button-caption {
- 	/*font-size:16px;*/
- 	font-size:120%;
- }
- 
- .v-button {
- 	margin-left:2%; 
- 	margin-top:5%; 
- 	margin-bottom:5%; 
- 	width:90%; 
- 	border-style:none;
- }
- 
- .v-panel {
- 	margin-top:3%;
- }
- 
- .v-splitpanel-horizontal {
- 	background:#f5f5f5;
- }
- 
- .v-vertical {
- 	background:#f5f5f5;
- }
- 
- .tulosteStyle {
- 	margin-top:2%;
- }
- 
- .tekijaStyle {
- 	/*font-size:14px;*/
- 	/*font-size:120%;*/ 
- 	margin-top:40%;
- }
- 
- .tehtavaStyle .v-button-caption {
- 	color:black;
- 	font-size:120%; 
- 	/*font-size:16px;*/
- }
- 
- .tehtavaStyle {
- 	margin-bottom:0%;
- }
- 
- .tutoriaaliStyle {
- 	margin-bottom:20%;
- }
- 
- .tutoriaaliStyle .v-button-caption {
- 	color:black; 
- 	font-size:120%;
- 	/*font-size:16px;*/
- }
- 
- .tehtavanAnto {
- 	/*font-size:30px;*/
- 	font-size:140%; 
- 	text-align:center;
- }
- 
- .takaisinStyle {
- 	margin-top:2%; 
- 	margin-left:2%; 
- 	margin-bottom:0%; 
- 	width:10%;
- }
- 
- .arvioiStyle {
- 	margin-top:5%; 
- 	margin-bottom:2%; 
- 	width:50%; 
- 	margin-right:0%;
- }
- 
- .arvioiStyle .v-button-caption {
- 	color:black;
- }
- 
- .suoritaStyle {
- 	margin-top:5%; 
- 	margin-left:35%; 
- 	margin-right:0%; 
- 	margin-bottom:2%; 
- 	width:50%;
- }
- 
- .suoritaStyle .v-button-caption {
- 	color:black;
- }
- 
- .naytaVastausStyle {
- 	width:50%; 
- 	margin-left:90%;
- }
- 
- .pythonStyle {
- 	width:40% !important; 
- 	margin-top:5%;
- }		
- 
- .pythonStyle .v-button-caption {
- 	color:black; 
- 	/*font-size:18px;*/
- 	font-size:140%;
- }
- 
- .tehtAntoStyle {
- 	margin-left:10%; 
- 	color:#f14c1a;
- 	width:80% !important;
- }
- 
- .tulosteOtsikkoStyle {
- 	margin-left:10%; 
- 	/*font-size:18px;*/ 
- 	color:#f14c1a;
- }
- 
- p.teht {
-  	font-size:150%;
- }
- 
- .tehtAntoMalliStyle {
- 	margin-left:10%;
- 	/*font-size:18px;*/
- 	color:#f14c1a;
- 	width:80% !important;
- 	margin-top:10%;
- }
- 
- .suljeStyle {
- 	width:50%; 
- 	margin-bottom:0%;
- }
- 
- .suljeStyle .v-button-caption {
- 	color:black;
- }
- 
- .palauteStyle {
-  	text-align:center;
- }
- 
- .ohjeStyle .v-button-caption {
- 	font-family:Calibri; 
- 	font-weight:bolder;
- }
- 
- .malliVastausTextStyle {
- 	margin-top:2%;
- }
- 
- .malliVastausVideoStyle {
- 	margin-top:10%;
- }
-
- .v-horizontallayout-pyHlayStyle .v-slot-pyOtsikkoStyle {
- 	width:65% !important;
- }
- 
- .v-horizontallayout-pyHlayStyle .v-slot-pyKuvaStyle {
- 	width:35% !important;
- }
- 
- .v-ui .v-scrollable {
- 	overflow:visible;
- }
- 
- .kuvaStyle {
- 	margin-left:25%;
- }
- 
- textarea.v-textarea {
- 	font-size:20px;
- 	line-height:1.2;
- 	padding:1%; 
-}
- 
 }
