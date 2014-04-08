@@ -42,7 +42,7 @@ public class Editori extends Panel implements View {
 	private Button naytaVastaus = new Button("Mallivastaus");
 	private Label otsikko = new Label("");
 	private Label tehtAnto = new Label("");
-	private Label tulosteOtsikko = new Label("Ohjelman tulostus (Python-k‰‰nt‰j‰n l‰pi ajettuna)");
+	private Label tulosteOtsikko = new Label("<p class='teht'>Ohjelman tulostus (Python-k‰‰nt‰j‰n l‰pi ajettuna)</p>");
 	private String tehtavaTyyppi = "";
 	private String tehtavanAnto;
 	private String malliVastaus;
@@ -64,9 +64,9 @@ public class Editori extends Panel implements View {
 	public void initLayout() {
 		vlay.setSizeFull();
 		tekstikentta.setWidth(80, TextArea.Unit.PERCENTAGE);
-		tekstikentta.setRows(20);
+		tekstikentta.setRows(16);
 		tulosteAlue.setWidth(80, TextArea.Unit.PERCENTAGE);
-		tulosteAlue.setRows(20);
+		tulosteAlue.setRows(16);
 		tulosteAlue.setStyleName("tulosteStyle");
 		tulosteAlue.setEnabled(false);
 		arvioi.setEnabled(false);
@@ -78,7 +78,9 @@ public class Editori extends Panel implements View {
 		takaisin.setStyleName(Runo.BUTTON_DEFAULT);
 		ohje.setStyleName("ohjeStyle");
 		tehtAnto.setStyleName("tehtAntoStyle");
+		tehtAnto.setContentMode(ContentMode.HTML);
 		tulosteOtsikko.setStyleName("tulosteOtsikkoStyle");
+		tulosteOtsikko.setContentMode(ContentMode.HTML);
 		takaisin.setWidth("250px");
 		ohje.setWidth("100px");
 		
@@ -292,7 +294,7 @@ public class Editori extends Panel implements View {
 		alustaMallivastaus();
 		alustaParametrit();
 		
-		tehtAnto.setValue(tehtavanAnto);
+		tehtAnto.setValue("<p class='teht'>" + tehtavanAnto + "</p>" );
 	}
 	
 	/**

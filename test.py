@@ -1,2 +1,4 @@
-for i in range(1,10,3):
-  print i
+x="koira"
+y="auto"
+
+print x

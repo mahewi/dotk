@@ -30,7 +30,7 @@ public class AloitusView extends Panel implements View {
 	private Label otsikko = new Label("<h1 class='etuSivuOtsikko'>Ohjelmoinnin alkeet</h1>");
 	private Label esittely = new Label("");
 	private Label kielet = new Label("<h2>Valitse ohjelmointikieli</h2>");
-	private Label tekijat = new Label("<i>&copy Marco Willgren & Tatu Seppä-Lassila, 2014</i>");
+	private Label tekijat = new Label("&copy Marco Willgren & Tatu Seppä-Lassila, 2014");
 	private Button python = new Button("Python");
 	private Panel esittelyPaneeli = new Panel();
 

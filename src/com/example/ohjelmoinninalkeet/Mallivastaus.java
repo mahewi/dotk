@@ -57,10 +57,11 @@ public class Mallivastaus extends Window {
 	    setWidth("80%");
 	    
 	    tehtAnto.setStyleName("tehtAntoMalliStyle");
-	    tehtAnto.setValue(tehtava);
+	    tehtAnto.setContentMode(ContentMode.HTML);
+	    tehtAnto.setValue("<p class='teht'>" + tehtava + "</p>");
 	    
 		vastaus.setWidth(80, TextArea.Unit.PERCENTAGE);
-		vastaus.setRows(20);
+		vastaus.setRows(16);
 		vastaus.setStyleName("malliVastausTextStyle");
 		asetaVastaus(mallivastaus);
 		

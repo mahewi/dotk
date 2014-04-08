@@ -1,6 +1,7 @@
 package com.example.ohjelmoinninalkeet;
 
 import com.vaadin.server.VaadinRequest;
+import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
@@ -26,8 +27,9 @@ public class PalautePopup extends Window {
         Button sulje = new Button("Sulje");
         sulje.setStyleName(Runo.BUTTON_DEFAULT);
         sulje.setWidth("25%");
-        Label palaute = new Label(oikeellisuus);
+        Label palaute = new Label("<p class='teht'>" + oikeellisuus + "</p>");
         palaute.setStyleName("palauteStyle");
+        palaute.setContentMode(ContentMode.HTML);
         
         setHeight("20%");
         setWidth("20%");
