@@ -4,6 +4,8 @@ import java.sql.*;
 import java.util.Random;
 import java.util.ArrayList;
 
+import com.vaadin.server.VaadinService;
+
 /**
  * Tietokanta luokka sis‰lt‰‰ tietokantaan liittyv‰t toiminnallisuudet.
  * Yhteydenoton ja tietojen hakemisen.
@@ -26,7 +28,7 @@ public class Tietokanta {
 		Connection c = yhteys;
 	    try {
 	      Class.forName("org.sqlite.JDBC");
-	      c = DriverManager.getConnection("jdbc:sqlite:pythonTehtavat.db");
+	      c = DriverManager.getConnection("jdbc:sqlite:/opt/tomcat/webapps/ROOT/WEB-INF/db/pythonTehtavat.db");
 	    }
 	    catch (Exception e) {
 	    	System.out.println(e.toString());
