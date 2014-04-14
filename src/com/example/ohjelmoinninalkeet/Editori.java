@@ -117,16 +117,21 @@ public class Editori extends Panel implements View {
 		// Tapahtuman k‰sittely suorita-napille
 		suorita.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				tulosteAlue.setValue(toPython(tekstikentta.getValue()));
-				if (tarkistaKentta(tekstikentta) == true && tarkistaKentta(tulosteAlue) == true) {
-					arvioi.setEnabled(true);  // Napin painalluksen j‰lkeen aktivoidaan "Arvioi"-painike
-				}
-				else if (tarkistaKentta(tekstikentta) == false) {
-					Notification.show("VIRHE!", "Et voi suorittaa ohjelmaa, jota ei ole olemassa!", Notification.Type.ERROR_MESSAGE);
+				if (checkImport(tekstikentta) == true) {
+					tulosteAlue.setValue(toPython(tekstikentta.getValue()));
+					if (tarkistaKentta(tekstikentta) == true && tarkistaKentta(tulosteAlue) == true) {
+						arvioi.setEnabled(true);  // Napin painalluksen j‰lkeen aktivoidaan "Arvioi"-painike
+					}
+					else if (tarkistaKentta(tekstikentta) == false) {
+						Notification.show("VIRHE!", "Et voi suorittaa ohjelmaa, jota ei ole olemassa!", Notification.Type.ERROR_MESSAGE);
+					}
+					else {
+						Notification.show("VIRHE!", "Ohjelmasi ei mennyt k‰‰nt‰j‰st‰ l‰pi!" + "\n\n" + "K‰‰nt‰j‰n antama virheilmoitus:" + "\n\n"
+					    + getErrorCode(tekstikentta.getValue()), Notification.Type.ERROR_MESSAGE);
+					}
 				}
 				else {
-					Notification.show("VIRHE!", "Ohjelmasi ei mennyt k‰‰nt‰j‰st‰ l‰pi!" + "\n\n" + "K‰‰nt‰j‰n antama virheilmoitus:" + "\n\n"
-				    + getErrorCode(tekstikentta.getValue()), Notification.Type.ERROR_MESSAGE);
+					Notification.show("Importing isn't necessary! ;)", Notification.Type.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -449,6 +454,15 @@ public class Editori extends Panel implements View {
 				}
 			}
 			tekstikentta.setValue(apu);
+		}
+	}
+	
+	public boolean checkImport(TextArea ta) {
+		if (ta.getValue().contains("import")) {
+			return false;
+		}
+		else {
+			return true;
 		}
 	}
 }
