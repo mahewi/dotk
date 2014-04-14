@@ -1,1 +1,4 @@
-print "hh"
+x="banaani"
+y="auto"
+
+print x
